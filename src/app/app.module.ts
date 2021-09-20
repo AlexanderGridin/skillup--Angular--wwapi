@@ -10,9 +10,12 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { UserMapper } from './mappers/UserMapper';
+import { UsersPageComponent } from './pages/users-page/users-page.component';
+import { PageComponent } from './components/page/page.component';
+import { ContainerComponent } from './components/container/container.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersTableComponent],
+  declarations: [AppComponent, UsersTableComponent, UsersPageComponent, PageComponent, ContainerComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
