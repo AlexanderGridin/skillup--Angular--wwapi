@@ -9,6 +9,8 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { UserMapper } from './mappers/UserMapper';
+
 @NgModule({
   declarations: [AppComponent, UsersTableComponent],
   imports: [
@@ -17,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GridModule,
     BrowserAnimationsModule,
   ],
-  providers: [LocalApiService],
+  providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
