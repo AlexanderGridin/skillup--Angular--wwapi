@@ -13,9 +13,10 @@ import { UserMapper } from './mappers/UserMapper';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { PageComponent } from './components/page/page.component';
 import { ContainerComponent } from './components/container/container.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersTableComponent, UsersPageComponent, PageComponent, ContainerComponent],
+  declarations: [AppComponent, UsersTableComponent, UsersPageComponent, PageComponent, ContainerComponent, UserFormComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
