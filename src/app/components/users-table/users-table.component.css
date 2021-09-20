@@ -1,0 +1,9 @@
+.users-table__header-cell {
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+}
+
+.users-table__body-cell {
+  text-align: center;
+}

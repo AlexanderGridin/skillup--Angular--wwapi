@@ -6,10 +6,17 @@ import { AppComponent } from './app.component';
 
 import { LocalApiService } from './services/local-api/local-api.service';
 import { UsersTableComponent } from './components/users-table/users-table.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, UsersTableComponent],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    GridModule,
+    BrowserAnimationsModule,
+  ],
   providers: [LocalApiService],
   bootstrap: [AppComponent],
 })

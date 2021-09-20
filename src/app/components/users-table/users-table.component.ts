@@ -1,32 +1,35 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { LocalApiService } from 'src/app/services/local-api/local-api.service';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+} from '@angular/core';
 import { User } from 'src/app/interfaces/user/user';
 
 @Component({
   selector: 'users-table',
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.css'],
+  encapsulation: ViewEncapsulation.None, //TODO: Clarify this point
 })
-export class UsersTableComponent implements OnInit, OnDestroy {
-  public users!: User[];
-  private getUsersSub!: Subscription;
+export class UsersTableComponent {
+  @Input() users!: User[];
 
-  constructor(private localApiService: LocalApiService) {}
+  private selectedUser!: User;
 
-  public ngOnInit(): void {
-    this.getUsers();
+  public headerCellClass: {} = { 'users-table__header-cell': true };
+  public bodyCellClass: {} = { 'users-table__body-cell': true };
+
+  @Output() private onSelectUserByDblclick: EventEmitter<User> =
+    new EventEmitter<User>();
+
+  public handleKendoCellClick({ dataItem }: { dataItem: User }): void {
+    this.selectedUser = dataItem;
   }
 
-  private getUsers(): void {
-    this.getUsersSub = this.localApiService.getUsers().subscribe({
-      next: (users: User[]): void => {
-        this.users = users;
-      },
-    });
-  }
-
-  public ngOnDestroy(): void {
-    this.getUsersSub.unsubscribe();
+  public handleKendoGridDoubleClick(): void {
+    console.log(this.selectedUser);
+    this.onSelectUserByDblclick.emit(this.selectedUser);
   }
 }

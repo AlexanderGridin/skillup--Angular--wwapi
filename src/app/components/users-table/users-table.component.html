@@ -1,2 +1,41 @@
-<p>users-table works!</p>
-<pre>{{ users | json }}</pre>
+<kendo-grid
+  [data]="users"
+  scrollable="none"
+  (cellClick)="handleKendoCellClick($event)"
+  (dblclick)="handleKendoGridDoubleClick()"
+>
+  <kendo-grid-column
+    title="Name"
+    [headerClass]="headerCellClass"
+    [class]="bodyCellClass"
+  >
+    <ng-template kendoGridCellTemplate let-user>
+      {{ user.firstName }} {{ user.lastName }}
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column
+    field="email"
+    title="Email"
+    [headerClass]="headerCellClass"
+    [class]="bodyCellClass"
+  ></kendo-grid-column>
+
+  <kendo-grid-column
+    title="Address"
+    [headerClass]="headerCellClass"
+    [class]="bodyCellClass"
+  >
+    <ng-template kendoGridCellTemplate let-user>
+      {{ user.address.zipcode }}, {{ user.address.city }},
+      {{ user.address.street }}, {{ user.address.building }}
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column
+    field="phone"
+    title="Phone"
+    [headerClass]="headerCellClass"
+    [class]="bodyCellClass"
+  ></kendo-grid-column>
+</kendo-grid>
