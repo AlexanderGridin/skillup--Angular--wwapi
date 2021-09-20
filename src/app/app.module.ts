@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -10,7 +9,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 
 @NgModule({
   declarations: [AppComponent, UsersTableComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule],
   providers: [LocalApiService],
   bootstrap: [AppComponent],
 })
