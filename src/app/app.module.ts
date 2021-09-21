@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 
@@ -21,9 +23,8 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 
-
-
-
+import { usersReducer } from './store/users/users.reducer';
+import { UsersEffects } from './store/users/users.effects';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,9 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
     LabelModule,
     ButtonsModule,
     DialogsModule,
+
+    StoreModule.forRoot({ users: usersReducer }),
+    EffectsModule.forRoot([UsersEffects]),
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],

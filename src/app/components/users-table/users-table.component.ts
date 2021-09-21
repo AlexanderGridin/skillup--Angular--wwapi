@@ -12,6 +12,10 @@ import { LocalApiService } from 'src/app/services/local-api/local-api.service';
 import { User } from 'src/app/interfaces/user/user';
 import { UserOfUsersTable } from 'src/app/interfaces/user/user-of-users-table';
 
+import { Store } from '@ngrx/store';
+import { UsersActions } from 'src/app/store/users/users.actions';
+import { UsersSelectors } from 'src/app/store/users/users.selectors';
+
 @Component({
   selector: 'users-table',
   templateUrl: './users-table.component.html',
@@ -28,6 +32,7 @@ export class UsersTableComponent implements OnInit, OnDestroy {
     new EventEmitter<number>();
 
   constructor(
+    private store$: Store,
     private userMapper: UserMapper,
     private localApiService: LocalApiService
   ) {}
@@ -37,9 +42,13 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   }
 
   private getUsers(): void {
-    this.getUsersSub = this.localApiService.getUsers().subscribe({
+    this.store$.dispatch(UsersActions.loadUsers());
+    this.store$.select(UsersSelectors.getUsers).subscribe({
       next: this.setUsersForRender.bind(this),
     });
+    // this.getUsersSub = this.localApiService.getUsers().subscribe({
+    //   next: this.setUsersForRender.bind(this),
+    // });
   }
 
   public setUsersForRender(users: User[]): void {
