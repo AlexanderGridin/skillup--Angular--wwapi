@@ -1,1 +1,17 @@
 <p>user-form works!</p>
+<form [formGroup]="form">
+  <kendo-form-field>
+    <kendo-label class="user-form__label" [for]="userName" text="User name">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="user-form__control user-form__control--user-name"
+      formControlName="userName"
+      placeholder="Enter Name"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #userName
+    ></kendo-textbox>
+  </kendo-form-field>
+</form>
