@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -13,14 +14,32 @@ import { UserMapper } from './mappers/UserMapper';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { PageComponent } from './components/page/page.component';
 import { ContainerComponent } from './components/container/container.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { LabelModule } from '@progress/kendo-angular-label';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+
+
+
 
 @NgModule({
-  declarations: [AppComponent, UsersTableComponent, UsersPageComponent, PageComponent, ContainerComponent],
+  declarations: [
+    AppComponent,
+    UsersTableComponent,
+    UsersPageComponent,
+    PageComponent,
+    ContainerComponent,
+    UserFormComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     GridModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    InputsModule,
+    LabelModule,
+    ButtonsModule,
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
