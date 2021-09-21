@@ -17,6 +17,8 @@ import { ContainerComponent } from './components/container/container.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LabelModule } from '@progress/kendo-angular-label';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+
 
 
 
@@ -37,6 +39,7 @@ import { LabelModule } from '@progress/kendo-angular-label';
     ReactiveFormsModule,
     InputsModule,
     LabelModule,
+    ButtonsModule,
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
