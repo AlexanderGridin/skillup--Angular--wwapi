@@ -19,6 +19,8 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+
 
 
 
@@ -42,6 +44,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     InputsModule,
     LabelModule,
     ButtonsModule,
+    DialogsModule,
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
