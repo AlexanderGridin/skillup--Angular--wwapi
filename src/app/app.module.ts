@@ -15,6 +15,8 @@ import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { PageComponent } from './components/page/page.component';
 import { ContainerComponent } from './components/container/container.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     GridModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    InputsModule,
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
