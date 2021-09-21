@@ -59,4 +59,8 @@ export class UserFormComponent implements OnInit {
       }),
     });
   }
+
+  public handleFormSubmit(): void {
+    console.log(this.form.controls);
+  }
 }
