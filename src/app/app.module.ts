@@ -26,6 +26,9 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { usersReducer } from './store/users/users.reducer';
 import { UsersEffects } from './store/users/users.effects';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +52,12 @@ import { UsersEffects } from './store/users/users.effects';
 
     StoreModule.forRoot({ users: usersReducer }),
     EffectsModule.forRoot([UsersEffects]),
+    // Redux dev-tools
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
