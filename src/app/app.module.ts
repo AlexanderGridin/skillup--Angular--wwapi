@@ -16,6 +16,8 @@ import { PageComponent } from './components/page/page.component';
 import { ContainerComponent } from './components/container/container.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { LabelModule } from '@progress/kendo-angular-label';
+
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     InputsModule,
+    LabelModule,
   ],
   providers: [LocalApiService, UserMapper],
   bootstrap: [AppComponent],
