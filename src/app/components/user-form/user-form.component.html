@@ -188,7 +188,7 @@
       type="submit"
       [primary]="true"
     >
-      Submit
+      {{ submitButtonText }}
     </button>
     <button
       class="user-form__button"
@@ -196,7 +196,7 @@
       type="button"
       (click)="handleCancel($event)"
     >
-      Cancel
+      {{ cancelButtonText }}
     </button>
   </div>
 </form>

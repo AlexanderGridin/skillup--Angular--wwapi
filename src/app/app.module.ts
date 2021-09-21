@@ -18,6 +18,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 
@@ -30,6 +31,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     PageComponent,
     ContainerComponent,
     UserFormComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
