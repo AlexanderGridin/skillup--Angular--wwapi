@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,10 @@ export class UserFormComponent implements OnInit {
 
   public form!: FormGroup;
 
-  constructor() {}
+  public phoneFormControlMask: string = '+38(999) 00-00-000';
+
+  @Output() private onFormCancel: EventEmitter<Event> =
+    new EventEmitter<Event>();
 
   public ngOnInit(): void {
     this.initForm();
@@ -33,7 +36,7 @@ export class UserFormComponent implements OnInit {
         Validators.maxLength(15),
       ]),
 
-      email: new FormControl('', [Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
 
       address: new FormGroup({
         street: new FormControl('', [
@@ -48,7 +51,7 @@ export class UserFormComponent implements OnInit {
         zipcode: new FormControl('', [Validators.required]),
       }),
 
-      phone: new FormControl('', Validators.pattern('[- +()0-9]+')),
+      phone: new FormControl('', [Validators.required]),
 
       website: new FormControl('', [Validators.required]),
 
@@ -61,6 +64,38 @@ export class UserFormComponent implements OnInit {
   }
 
   public handleFormSubmit(): void {
-    console.log(this.form.controls);
+    this.form.invalid
+      ? this.handleFormInvalidStatus()
+      : this.handleFormValidStatus();
+
+    console.log(this.form);
+  }
+
+  private handleFormInvalidStatus(): void {
+    this.markAllInvalidControlsAsTouchedOf(this.form);
+    console.log('form invalid');
+  }
+
+  private markAllInvalidControlsAsTouchedOf(formGroup: FormGroup): void {
+    if (!formGroup.controls) {
+      return;
+    }
+
+    for (let controlKey in formGroup.controls) {
+      let control: FormGroup = formGroup.controls[controlKey] as FormGroup;
+
+      if (control.controls) {
+        this.markAllInvalidControlsAsTouchedOf(control);
+      }
+
+      formGroup.controls[controlKey].invalid &&
+        formGroup.controls[controlKey].markAsTouched();
+    }
+  }
+
+  private handleFormValidStatus(): void {}
+
+  public handleCancel(event: Event): void {
+    this.onFormCancel.emit(event);
   }
 }
