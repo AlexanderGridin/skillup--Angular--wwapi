@@ -8,6 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 
 import { LocalApiService } from './services/local-api/local-api.service';
+import { UsersStoreService } from './services/users-store/users-store.service';
+
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,7 +61,7 @@ import { environment } from '../environments/environment';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
   ],
-  providers: [LocalApiService, UserMapper],
+  providers: [LocalApiService, UserMapper, UsersStoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
