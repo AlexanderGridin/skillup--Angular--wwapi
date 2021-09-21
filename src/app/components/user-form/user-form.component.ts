@@ -16,9 +16,8 @@ export class UserFormComponent implements OnInit {
 
   public phoneFormControlMask: string = '+38(999) 00-00-000';
 
-  @Output() private onFormCancel: EventEmitter<Event> =
-    new EventEmitter<Event>();
-  @Output() private onFormSubmit: EventEmitter<User | null> =
+  @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output() private onSubmit: EventEmitter<User | null> =
     new EventEmitter<User | null>();
 
   public ngOnInit(): void {
@@ -76,7 +75,7 @@ export class UserFormComponent implements OnInit {
 
   private handleFormInvalidStatus(): void {
     this.markAllInvalidControlsAsTouchedOf(this.form);
-    this.onFormSubmit.emit(null);
+    this.onSubmit.emit(null);
   }
 
   private markAllInvalidControlsAsTouchedOf(formGroup: FormGroup): void {
@@ -97,10 +96,10 @@ export class UserFormComponent implements OnInit {
   }
 
   private handleFormValidStatus(): void {
-    this.onFormSubmit.emit(this.form.value);
+    this.onSubmit.emit(this.form.value);
   }
 
   public handleCancel(event: Event): void {
-    this.onFormCancel.emit(event);
+    this.onCancel.emit(event);
   }
 }

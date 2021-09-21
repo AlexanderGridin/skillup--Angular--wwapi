@@ -59,7 +59,10 @@
     ></kendo-textbox>
   </kendo-formfield>
 
-  <div class="user-form__address user-form__item" formGroupName="address">
+  <div
+    class="user-form__address user-form__field-group user-form__item"
+    formGroupName="address"
+  >
     <kendo-formfield class="user-form__street user-form__item">
       <kendo-label class="user-form__label" [for]="street" text="Street">
         <span class="user-form__required">&nbsp;*</span>
@@ -149,7 +152,10 @@
     ></kendo-textbox>
   </kendo-formfield>
 
-  <div class="user-form__company user-form__item" formGroupName="company">
+  <div
+    class="user-form__company user-form__field-group user-form__item"
+    formGroupName="company"
+  >
     <kendo-formfield class="user-form__company-name user-form__item">
       <kendo-label class="user-form__label" [for]="name" text="Company name">
         <span class="user-form__required">&nbsp;*</span>
