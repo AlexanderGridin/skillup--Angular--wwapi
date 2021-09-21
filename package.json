@@ -21,6 +21,7 @@
     "@angular/router": "~12.2.0",
     "@ngrx/effects": "^12.4.0",
     "@ngrx/store": "^12.4.0",
+    "@ngrx/store-devtools": "^12.4.0",
     "@progress/kendo-angular-buttons": "^6.0.0",
     "@progress/kendo-angular-common": "^2.0.0",
     "@progress/kendo-angular-dateinputs": "^5.0.0",
