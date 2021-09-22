@@ -7,7 +7,8 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserMapper } from 'src/app/mappers/UserMapper';
-import { LocalApiService } from 'src/app/services/local-api/local-api.service';
+
+import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
 import { User } from 'src/app/interfaces/user/user';
 import { UserOfUsersTable } from 'src/app/interfaces/user/user-of-users-table';
@@ -29,7 +30,7 @@ export class UsersTableComponent implements OnInit, OnDestroy {
 
   constructor(
     private userMapper: UserMapper,
-    private localApiService: LocalApiService
+    private usersStoreService: UsersStoreService
   ) {}
 
   public ngOnInit(): void {
@@ -37,7 +38,8 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   }
 
   private getUsers(): void {
-    this.getUsersSub = this.localApiService.getUsers().subscribe({
+    this.usersStoreService.loadUsers();
+    this.getUsersSub = this.usersStoreService.getUsers().subscribe({
       next: this.setUsersForRender.bind(this),
     });
   }

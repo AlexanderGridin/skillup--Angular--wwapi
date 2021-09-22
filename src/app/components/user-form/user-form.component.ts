@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/interfaces/user/user';
 
 @Component({
   selector: 'user-form',
@@ -8,13 +9,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UserFormComponent implements OnInit {
   @Input() private isEdit: boolean = false;
+  @Input() public submitButtonText: string = 'Submit';
+  @Input() public cancelButtonText: string = 'Cancel';
 
   public form!: FormGroup;
 
   public phoneFormControlMask: string = '+38(999) 00-00-000';
 
-  @Output() private onFormCancel: EventEmitter<Event> =
-    new EventEmitter<Event>();
+  @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output() private onSubmit: EventEmitter<User | null> =
+    new EventEmitter<User | null>();
 
   public ngOnInit(): void {
     this.initForm();
@@ -67,13 +71,11 @@ export class UserFormComponent implements OnInit {
     this.form.invalid
       ? this.handleFormInvalidStatus()
       : this.handleFormValidStatus();
-
-    console.log(this.form);
   }
 
   private handleFormInvalidStatus(): void {
     this.markAllInvalidControlsAsTouchedOf(this.form);
-    console.log('form invalid');
+    this.onSubmit.emit(null);
   }
 
   private markAllInvalidControlsAsTouchedOf(formGroup: FormGroup): void {
@@ -93,9 +95,11 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  private handleFormValidStatus(): void {}
+  private handleFormValidStatus(): void {
+    this.onSubmit.emit(this.form.value);
+  }
 
   public handleCancel(event: Event): void {
-    this.onFormCancel.emit(event);
+    this.onCancel.emit(event);
   }
 }

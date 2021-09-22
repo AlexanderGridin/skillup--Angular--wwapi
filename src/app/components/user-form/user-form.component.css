@@ -6,6 +6,26 @@
   margin-top: 15px;
 }
 
+.user-form__field-group {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+}
+
+.user-form__field-group .user-form__item + .user-form__item {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.user-form__address .user-form__item {
+  width: 25%;
+}
+
+.user-form__company .user-form__item {
+  width: 50%;
+}
+
 .user-form__label {
   display: block;
   font-weight: bold;
@@ -23,7 +43,7 @@
 .user-form__actions {
   align-items: flex-start;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   padding-top: 15px;
   margin: -5px;
 }
