@@ -16,4 +16,8 @@ export class UsersStoreService {
   public getUsers(): Observable<User[]> {
     return this.store$.select(UsersSelectors.getUsers);
   }
+
+  public addUser(user: User): void {
+    this.store$.dispatch(UsersActions.addUser({ user }));
+  }
 }
