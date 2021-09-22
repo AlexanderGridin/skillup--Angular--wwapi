@@ -11,4 +11,8 @@ export const ROUTES: Routes = [
     path: 'users/:id',
     component: UserPageComponent,
   },
+  {
+    path: 'users',
+    redirectTo: '/',
+  },
 ];
