@@ -34,6 +34,7 @@ import { environment } from '../environments/environment';
 
 import { ROUTES } from './routing/routes';
 import { UserPageComponent } from './pages/user-page/user-page.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
     UserFormComponent,
     AddUserComponent,
     UserPageComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
