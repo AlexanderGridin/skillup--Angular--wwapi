@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import { LocalApiService } from './services/local-api/local-api.service';
 import { UsersStoreService } from './services/users-store/users-store.service';
+import { PostsStoreService } from './services/posts-store/posts-store.service';
 
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { GridModule } from '@progress/kendo-angular-grid';
@@ -75,7 +76,12 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
   ],
-  providers: [LocalApiService, UserMapper, UsersStoreService],
+  providers: [
+    LocalApiService,
+    UserMapper,
+    UsersStoreService,
+    PostsStoreService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
