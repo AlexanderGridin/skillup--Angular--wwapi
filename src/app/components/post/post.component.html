@@ -7,7 +7,16 @@
     {{ post.body }}
   </div>
   <div class="post__actions">
-    <button class="post__button" kendoButton [primary]="true">Edit</button>
-    <button class="post__button" kendoButton>Remove</button>
+    <button
+      class="post__button"
+      kendoButton
+      [primary]="true"
+      (click)="editPost()"
+    >
+      Edit
+    </button>
+    <button class="post__button" kendoButton (click)="removePost()">
+      Remove
+    </button>
   </div>
 </div>

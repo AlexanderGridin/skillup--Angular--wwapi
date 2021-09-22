@@ -3,6 +3,8 @@ import { Post } from 'src/app/interfaces/post';
 import { User } from 'src/app/interfaces/user/user';
 import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'user-posts',
   templateUrl: './user-posts.component.html',
@@ -12,9 +14,17 @@ export class UserPostsComponent implements OnInit {
   @Input() public user!: User;
   public posts!: Post[];
 
-  constructor(private postsStoreService: PostsStoreService) {}
+  constructor(
+    private postsStoreService: PostsStoreService,
+    private http: HttpClient
+  ) {}
 
   public ngOnInit(): void {
+    // this.http.delete('http://localhost:3000/api/posts/3').subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+    //   },
+    // });
     this.loadPosts();
   }
 

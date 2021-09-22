@@ -20,4 +20,9 @@ export class PostsStoreService {
   public getPostsByUserId(userId: number): Observable<Post[]> {
     return this.store$.select(PostsSelectors.getPostsByUserId(userId));
   }
+
+  public removePostById(postId: number): void {
+    this.store$.dispatch(PostsActions.removePostById({ postId }));
+    console.log(postId);
+  }
 }

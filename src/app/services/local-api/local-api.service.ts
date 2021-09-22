@@ -22,4 +22,8 @@ export class LocalApiService {
   public getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.baseUrl}/api/posts`);
   }
+
+  public removePostById(postId: number): Observable<Object> {
+    return this.http.delete(`${this.baseUrl}/api/posts/${postId}`);
+  }
 }

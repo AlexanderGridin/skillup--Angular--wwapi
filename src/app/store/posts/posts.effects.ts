@@ -20,6 +20,17 @@ export class PostsEffects {
     )
   );
 
+  public removePost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PostsActions.removePostById),
+      mergeMap((action) =>
+        this.localApiSerivce
+          .removePostById(action.postId)
+          .pipe(map(() => PostsActions.loadPosts()))
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private localApiSerivce: LocalApiService
