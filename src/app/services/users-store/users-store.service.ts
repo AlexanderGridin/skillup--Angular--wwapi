@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/interfaces/user/user';
 import { UsersActions } from 'src/app/store/users/users.actions';
 import { UsersSelectors } from 'src/app/store/users/users.selectors';
+import { AddUserFormData } from 'src/app/interfaces/add-user-form-data';
 
 @Injectable()
 export class UsersStoreService {
@@ -15,5 +16,9 @@ export class UsersStoreService {
 
   public getUsers(): Observable<User[]> {
     return this.store$.select(UsersSelectors.getUsers);
+  }
+
+  public addUser(userFormData: AddUserFormData): void {
+    this.store$.dispatch(UsersActions.addUser({ userFormData }));
   }
 }

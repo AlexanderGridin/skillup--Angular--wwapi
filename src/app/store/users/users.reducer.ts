@@ -10,7 +10,7 @@ const initalStore: UsersStore = {
 const _usersReducer = createReducer(
   initalStore,
   on(
-    UsersActions.addUser,
+    UsersActions.addUserSuccess,
     (store: UsersStore, { user }: { user: User }): UsersStore => {
       const usersFromStore: User[] = [...store.users];
       const users: User[] = [...usersFromStore, user];
@@ -21,11 +21,6 @@ const _usersReducer = createReducer(
       };
     }
   ),
-
-  // on(UsersActions.loadUsers, (store: UsersStore): UsersStore => {
-  //   console.log('UsersActions.loadUsers');
-  //   return store;
-  // }),
 
   on(
     UsersActions.loadUsersSuccess,
