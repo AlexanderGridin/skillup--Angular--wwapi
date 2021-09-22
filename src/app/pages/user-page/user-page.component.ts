@@ -54,7 +54,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  public goToAllUsers(): void {
+  public goToUsersPage(): void {
     this.router.navigate(['/']);
   }
 

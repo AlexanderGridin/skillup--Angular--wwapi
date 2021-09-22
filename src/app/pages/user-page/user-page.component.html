@@ -1,5 +1,12 @@
-<page [title]="user?.username">
-  <button kendoButton [primary]="true" (click)="goToAllUsers()">
-    All users
-  </button>
+<page [title]="user.username" *ngIf="user">
+  <div class="user-page__actions">
+    <button
+      class="user-page__button"
+      kendoButton
+      [primary]="true"
+      (click)="goToUsersPage()"
+    >
+      All users
+    </button>
+  </div>
 </page>
