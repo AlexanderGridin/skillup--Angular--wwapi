@@ -23,7 +23,7 @@ export class UsersEffects {
       ofType(UsersActions.addUser),
       mergeMap((action) =>
         this.localApiService
-          .addUser(action.user)
+          .addUser(action.userFormData)
           .pipe(map((user: User) => UsersActions.addUserSuccess({ user })))
       )
     )
