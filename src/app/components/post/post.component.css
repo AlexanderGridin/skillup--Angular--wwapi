@@ -1,5 +1,29 @@
+.post {
+  padding: 10px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+.post__id {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: green;
+  color: white;
+}
+
 .post__title {
   margin-bottom: 15px;
+}
+
+.post__actions {
+  margin: -5px;
+  padding-top: 15px;
 }
 
 .post__button {

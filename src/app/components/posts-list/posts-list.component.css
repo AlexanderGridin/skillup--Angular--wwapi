@@ -4,11 +4,6 @@
   list-style: none;
 }
 
-.posts-list__item {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
 .posts-list__item + .posts-list__item {
   margin-top: 10px;
 }
