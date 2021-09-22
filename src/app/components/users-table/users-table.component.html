@@ -1,0 +1,11 @@
+<kendo-grid
+  [data]="usersForRender"
+  scrollable="none"
+  (cellClick)="handleKendoCellClick($event)"
+  (dblclick)="handleKendoGridDoubleClick()"
+>
+  <kendo-grid-column title="Name" field="name"> </kendo-grid-column>
+  <kendo-grid-column field="email" title="Email"></kendo-grid-column>
+  <kendo-grid-column title="Address" field="address"> </kendo-grid-column>
+  <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
+</kendo-grid>
