@@ -9,4 +9,9 @@ export namespace UsersSelectors {
     store,
     (store: UsersStore): User[] => store.users
   );
+
+  export const getUserById = (id: number) =>
+    createSelector(store, (store: UsersStore): User | undefined =>
+      store.users.find((user: User): boolean => user.id === id)
+    );
 }

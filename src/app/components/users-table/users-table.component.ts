@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserMapper } from 'src/app/mappers/UserMapper';
+import { Router } from '@angular/router';
 
 import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
@@ -30,7 +31,8 @@ export class UsersTableComponent implements OnInit, OnDestroy {
 
   constructor(
     private userMapper: UserMapper,
-    private usersStoreService: UsersStoreService
+    private usersStoreService: UsersStoreService,
+    private router: Router
   ) {}
 
   public ngOnInit(): void {
@@ -38,10 +40,15 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   }
 
   private getUsers(): void {
-    this.usersStoreService.loadUsers();
     this.getUsersSub = this.usersStoreService.getUsers().subscribe({
-      next: this.setUsersForRender.bind(this),
+      next: this.handleUsersFromStore.bind(this),
     });
+  }
+
+  private handleUsersFromStore(users: User[]): void {
+    users.length === 0
+      ? this.usersStoreService.loadUsers()
+      : this.setUsersForRender(users);
   }
 
   public setUsersForRender(users: User[]): void {
@@ -59,7 +66,7 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   }
 
   public handleKendoGridDoubleClick(): void {
-    console.log(this.selectedUser);
+    this.router.navigate(['users', this.selectedUser.id]);
     this.onSelectUserByDblclick.emit(this.selectedUser.id);
   }
 

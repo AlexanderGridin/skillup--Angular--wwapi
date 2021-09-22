@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -31,6 +32,9 @@ import { UsersEffects } from './store/users/users.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
+import { ROUTES } from './routing/routes';
+import { UserPageComponent } from './pages/user-page/user-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +44,7 @@ import { environment } from '../environments/environment';
     ContainerComponent,
     UserFormComponent,
     AddUserComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,9 @@ import { environment } from '../environments/environment';
 
     StoreModule.forRoot({ users: usersReducer }),
     EffectsModule.forRoot([UsersEffects]),
+
+    RouterModule.forRoot(ROUTES),
+
     // Redux dev-tools
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

@@ -21,4 +21,8 @@ export class UsersStoreService {
   public addUser(userFormData: AddUserFormData): void {
     this.store$.dispatch(UsersActions.addUser({ userFormData }));
   }
+
+  public getUserById(id: number): Observable<User | undefined> {
+    return this.store$.select(UsersSelectors.getUserById(id));
+  }
 }

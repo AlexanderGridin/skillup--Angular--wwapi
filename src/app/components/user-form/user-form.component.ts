@@ -26,7 +26,7 @@ export class UserFormComponent implements OnInit {
 
   public initForm(): void {
     this.form = new FormGroup({
-      userName: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
 
       firstName: new FormControl('', [
         Validators.required,
