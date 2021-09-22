@@ -1,1 +1,16 @@
-<p>post-form works!</p>
+<form class="post-form" [formGroup]="form" (ngSubmit)="handleFormSubmit()">
+  <kendo-formfield class="post-form__title post-form__item">
+    <kendo-label class="post-form__label" [for]="title" text="Post title">
+      <span class="post-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="post-form__control post-form__control--title"
+      formControlName="title"
+      placeholder="Title"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #title
+    ></kendo-textbox>
+  </kendo-formfield>
+</form>

@@ -1,22 +1,28 @@
 <div class="post">
   <div class="post__id">{{ post.id }}</div>
-  <h3 class="post__title">
-    {{ post.title }}
-  </h3>
-  <div class="post__body">
-    {{ post.body }}
+  <div class="post__content" *ngIf="!isEditing">
+    <h3 class="post__title">
+      {{ post.title }}
+    </h3>
+    <div class="post__body">
+      {{ post.body }}
+    </div>
+    <div class="post__actions">
+      <button
+        class="post__button"
+        kendoButton
+        [primary]="true"
+        (click)="editPost()"
+      >
+        Edit
+      </button>
+      <button class="post__button" kendoButton (click)="removePost()">
+        Remove
+      </button>
+    </div>
   </div>
-  <div class="post__actions">
-    <button
-      class="post__button"
-      kendoButton
-      [primary]="true"
-      (click)="editPost()"
-    >
-      Edit
-    </button>
-    <button class="post__button" kendoButton (click)="removePost()">
-      Remove
-    </button>
+
+  <div class="post__edit-form" *ngIf="isEditing">
+    <post-form></post-form>
   </div>
 </div>

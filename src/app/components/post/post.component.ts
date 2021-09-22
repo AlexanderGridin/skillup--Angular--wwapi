@@ -9,10 +9,13 @@ import { PostsStoreService } from 'src/app/services/posts-store/posts-store.serv
 })
 export class PostComponent {
   @Input() post!: Post;
+  public isEditing: boolean = false;
 
   constructor(private postsStoreService: PostsStoreService) {}
 
-  public editPost(): void {}
+  public editPost(): void {
+    this.isEditing = true;
+  }
 
   public removePost(): void {
     this.postsStoreService.removePostById(this.post.id);
