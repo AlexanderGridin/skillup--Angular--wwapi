@@ -1,3 +1,6 @@
 <page-section [title]="'Posts'">
-  <posts-list [posts]="posts" *ngIf="posts"></posts-list>
+  <ng-template [ngIf]="posts">
+    <posts-list [posts]="posts" *ngIf="posts.length > 0"></posts-list>
+    <message *ngIf="posts.length === 0">This user hasn't any posts...</message>
+  </ng-template>
 </page-section>

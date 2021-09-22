@@ -41,6 +41,7 @@ import { PostComponent } from './components/post/post.component';
 import { UserPostsComponent } from './components/user-posts/user-posts.component';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
 import { PageSectionComponent } from './components/page-section/page-section.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PageSectionComponent } from './components/page-section/page-section.com
     UserPostsComponent,
     PostsListComponent,
     PageSectionComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

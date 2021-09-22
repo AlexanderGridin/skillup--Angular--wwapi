@@ -1,0 +1,7 @@
+.message {
+  max-width: 450px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid orange;
+  margin: 25px auto;
+}
