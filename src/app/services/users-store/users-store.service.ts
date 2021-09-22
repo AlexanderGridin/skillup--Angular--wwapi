@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/interfaces/user/user';
 import { UsersActions } from 'src/app/store/users/users.actions';
 import { UsersSelectors } from 'src/app/store/users/users.selectors';
-import { AddUserFormData } from 'src/app/interfaces/add-user-form-data';
+import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 
 @Injectable()
 export class UsersStoreService {

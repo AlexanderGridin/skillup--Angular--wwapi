@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
-import { AddUserFormData } from 'src/app/interfaces/add-user-form-data';
+import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 import { UserMapper } from 'src/app/mappers/UserMapper';
 
 @Component({

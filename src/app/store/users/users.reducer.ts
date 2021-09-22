@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { UsersActions } from './users.actions';
-import { UsersStore } from 'src/app/interfaces/users-store';
+import { UsersStore } from 'src/app/interfaces/store/users-store';
 import { User } from 'src/app/interfaces/user/user';
 
 const initalStore: UsersStore = {

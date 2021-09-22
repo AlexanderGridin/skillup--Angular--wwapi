@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user/user';
-import { AddUserFormData } from 'src/app/interfaces/add-user-form-data';
+import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 
 @Injectable()
 export class LocalApiService {

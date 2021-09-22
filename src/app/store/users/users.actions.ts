@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from 'src/app/interfaces/user/user';
-import { AddUserFormData } from 'src/app/interfaces/add-user-form-data';
+import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 
 export namespace UsersActions {
   export const addUser = createAction(
