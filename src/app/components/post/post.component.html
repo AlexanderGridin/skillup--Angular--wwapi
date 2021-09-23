@@ -25,6 +25,7 @@
   <div class="post__edit-form" *ngIf="isEditing">
     <post-form
       [post]="post"
+      [submitButtonText]="'Save changes'"
       (onSubmit)="handlePostFormSubmit($event)"
       (onCancel)="handlePostFormCancel()"
     ></post-form>
@@ -41,6 +42,9 @@
         {{ commentsTogglerText }}
       </button>
     </div>
-    <comments-list [comments]="comments" *ngIf="isShowComments"></comments-list>
+    <comments-list
+      [comments]="comments"
+      *ngIf="isCommentsVisible"
+    ></comments-list>
   </div>
 </div>

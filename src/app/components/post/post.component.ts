@@ -14,7 +14,7 @@ export class PostComponent implements OnInit {
   public isEditing: boolean = false;
 
   public comments!: Comment[];
-  public isShowComments: boolean = false;
+  public isCommentsVisible: boolean = false;
   public commentsTogglerText: string = 'Show comments';
 
   constructor(
@@ -37,8 +37,8 @@ export class PostComponent implements OnInit {
   }
 
   public toggleCommentsVisibility(): void {
-    this.isShowComments = !this.isShowComments;
-    this.commentsTogglerText = this.isShowComments
+    this.isCommentsVisible = !this.isCommentsVisible;
+    this.commentsTogglerText = this.isCommentsVisible
       ? 'Hide comments'
       : 'Show comments';
   }

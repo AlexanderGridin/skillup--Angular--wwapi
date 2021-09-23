@@ -10,6 +10,7 @@ import { PostFormData } from 'src/app/interfaces/form-data/post-form-data';
 })
 export class PostFormComponent implements OnInit {
   @Input() public post!: Post;
+  @Input() public submitButtonText: string = 'Submit';
 
   private titleFormControlInitalValue!: string;
   private bodyFormControlInitalValue!: string;
