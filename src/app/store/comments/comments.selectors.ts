@@ -15,6 +15,6 @@ export namespace CommentsSelectors {
         (comment: Comment): boolean => comment.postId === postId
       );
 
-      return commentsOfPost.length > 0 ? commentsOfPost : null;
+      return commentsOfPost.length > 0 ? commentsOfPost : [];
     });
 }
