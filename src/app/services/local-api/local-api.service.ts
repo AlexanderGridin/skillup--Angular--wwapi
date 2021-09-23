@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user/user';
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 import { Post } from 'src/app/interfaces/post';
+import { Comment } from 'src/app/interfaces/comment';
 
 @Injectable()
 export class LocalApiService {
@@ -29,5 +30,9 @@ export class LocalApiService {
 
   public updatePost(post: Post): Observable<Post> {
     return this.http.put<Post>(`${this.baseUrl}/api/posts/${post.id}`, post);
+  }
+
+  public getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.baseUrl}/api/comments`);
   }
 }
