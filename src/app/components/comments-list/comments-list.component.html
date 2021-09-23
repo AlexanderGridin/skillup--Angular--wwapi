@@ -1,1 +1,5 @@
-<p>comments-list works!</p>
+<ul class="comments-list" *ngIf="comments">
+  <li class="comments-list__item" *ngFor="let comment of comments">
+    <comment [comment]="comment"></comment>
+  </li>
+</ul>
