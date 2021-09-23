@@ -41,6 +41,7 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
 import { PageSectionComponent } from './components/page-section/page-section.component';
 import { MessageComponent } from './components/message/message.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
+import { CommentsStoreService } from './services/comments-store/comments-store.service';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     UserMapper,
     UsersStoreService,
     PostsStoreService,
+    CommentsStoreService,
   ],
   bootstrap: [AppComponent],
 })

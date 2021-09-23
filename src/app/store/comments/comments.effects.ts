@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CommentsActions } from './comments.actions';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, switchMap, concatMap } from 'rxjs/operators';
 import { LocalApiService } from 'src/app/services/local-api/local-api.service';
 import { Comment } from 'src/app/interfaces/comment';
 
@@ -10,7 +10,7 @@ export class CommentsEffects {
   public loadComments$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CommentsActions.loadComments),
-      mergeMap(() =>
+      switchMap(() =>
         this.localApiService
           .getComments()
           .pipe(

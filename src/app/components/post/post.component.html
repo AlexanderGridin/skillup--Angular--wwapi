@@ -29,4 +29,8 @@
       (onCancel)="handlePostFormCancel()"
     ></post-form>
   </div>
+
+  <div *ngIf="comments">
+    {{ comments | json }}
+  </div>
 </div>
