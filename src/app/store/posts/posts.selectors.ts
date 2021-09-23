@@ -12,6 +12,6 @@ export namespace PostsSelectors {
 
   export const getPostsByUserId = (userId: number) =>
     createSelector(store, (store: PostsStore): Post[] =>
-      store.posts.filter((post: Post) => post.userId === userId)
+      store.posts.filter((post: Post): boolean => post.userId === userId)
     );
 }

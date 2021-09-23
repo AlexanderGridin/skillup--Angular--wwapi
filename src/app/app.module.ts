@@ -27,10 +27,8 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 
-import { usersReducer } from './store/users/users.reducer';
-import { UsersEffects } from './store/users/users.effects';
-import { postsReducer } from './store/posts/posts.reducer';
-import { PostsEffects } from './store/posts/posts.effects';
+import { STORE } from './store/store';
+import { EFFECTS } from './store/effects';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -72,8 +70,8 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     ButtonsModule,
     DialogsModule,
 
-    StoreModule.forRoot({ users: usersReducer, posts: postsReducer }),
-    EffectsModule.forRoot([UsersEffects, PostsEffects]),
+    StoreModule.forRoot(STORE),
+    EffectsModule.forRoot(EFFECTS),
 
     RouterModule.forRoot(ROUTES),
 
