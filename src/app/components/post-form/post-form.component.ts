@@ -17,7 +17,8 @@ export class PostFormComponent implements OnInit {
 
   public form!: FormGroup;
 
-  @Output() private onSubmit: EventEmitter<Post> = new EventEmitter<Post>();
+  @Output() private onSubmit: EventEmitter<Post | PostFormData> =
+    new EventEmitter<Post | PostFormData>();
   @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor() {}
@@ -41,13 +42,17 @@ export class PostFormComponent implements OnInit {
   }
 
   public handleFormSubmit(): void {
-    let updatedPost: Post = {
-      ...this.form.value,
-      userId: this.post.userId,
-      id: this.post.id,
-    };
+    if (this.post) {
+      let updatedPost: Post = {
+        ...this.form.value,
+        userId: this.post.userId,
+        id: this.post.id,
+      };
 
-    this.onSubmit.emit(updatedPost);
+      this.onSubmit.emit(updatedPost);
+    } else {
+      this.onSubmit.emit(this.form.value);
+    }
   }
 
   public handleFormCancel(event: Event): void {

@@ -3,6 +3,7 @@ import { Post } from 'src/app/interfaces/post';
 import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
 import { CommentsStoreService } from 'src/app/services/comments-store/comments-store.service';
 import { Comment } from 'src/app/interfaces/comment';
+import { PostFormData } from 'src/app/interfaces/form-data/post-form-data';
 
 @Component({
   selector: 'post',
@@ -47,8 +48,8 @@ export class PostComponent implements OnInit {
     this.isEditing = true;
   }
 
-  public handlePostFormSubmit(updatedPost: Post): void {
-    this.postsStoreService.updatePost(updatedPost);
+  public handlePostFormSubmit(updatedPost: Post | PostFormData): void {
+    this.postsStoreService.updatePost(updatedPost as Post);
   }
 
   public handlePostFormCancel(): void {

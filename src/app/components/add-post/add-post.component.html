@@ -1,1 +1,29 @@
-<p>add-post works!</p>
+<div class="add-post">
+  <div class="add-post__actions">
+    <button
+      class="add-post__button"
+      type="button"
+      kendoButton
+      [primary]="true"
+      (click)="showModal()"
+    >
+      Add post
+    </button>
+  </div>
+
+  <kendo-dialog
+    class="add-user__dialog"
+    *ngIf="isModalVisible"
+    [title]="modalTitle"
+    [minWidth]="modalMinWidth"
+    [width]="modalWidth"
+    (close)="closeModal()"
+  >
+    <post-form
+      class="add-user__form"
+      [submitButtonText]="'Add post'"
+      (onSubmit)="handleFormSubmit($event)"
+      (onCancel)="closeModal()"
+    ></post-form>
+  </kendo-dialog>
+</div>
