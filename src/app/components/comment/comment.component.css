@@ -1,0 +1,8 @@
+.comment {
+  background-color: #efefef;
+  padding: 15px;
+}
+
+.comment__field + .comment__field {
+  margin-top: 7px;
+}

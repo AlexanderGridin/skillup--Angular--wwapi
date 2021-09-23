@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  padding-left: 7px;
 }
 
 .comments-list__item + .comments-list__item {
