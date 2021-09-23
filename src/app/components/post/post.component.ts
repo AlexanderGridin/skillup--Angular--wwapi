@@ -14,6 +14,8 @@ export class PostComponent implements OnInit {
   public isEditing: boolean = false;
 
   public comments!: Comment[];
+  public isShowComments: boolean = false;
+  public commentsTogglerText: string = 'Show comments';
 
   constructor(
     private postsStoreService: PostsStoreService,
@@ -32,6 +34,13 @@ export class PostComponent implements OnInit {
           : (this.comments = commentsFormStore);
       },
     });
+  }
+
+  public toggleCommentsVisibility(): void {
+    this.isShowComments = !this.isShowComments;
+    this.commentsTogglerText = this.isShowComments
+      ? 'Hide comments'
+      : 'Show comments';
   }
 
   public editPost(): void {

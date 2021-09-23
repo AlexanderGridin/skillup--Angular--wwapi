@@ -30,7 +30,17 @@
     ></post-form>
   </div>
 
-  <div *ngIf="comments">
-    {{ comments | json }}
+  <div class="post__comments" *ngIf="comments">
+    <div class="post__comments-actions" *ngIf="!isEditing">
+      <button
+        class="post__button"
+        type="button"
+        kendoButton
+        (click)="toggleCommentsVisibility()"
+      >
+        {{ commentsTogglerText }}
+      </button>
+    </div>
+    <comments-list [comments]="comments" *ngIf="isShowComments"></comments-list>
   </div>
 </div>

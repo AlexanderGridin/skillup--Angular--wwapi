@@ -29,3 +29,15 @@
 .post__button {
   margin: 5px;
 }
+
+.post__comments {
+  padding-top: 25px;
+}
+
+.post__comments-actions {
+  margin: 0 -5px;
+}
+
+.post__comments-actions .post__button {
+  margin: 5px;
+}
