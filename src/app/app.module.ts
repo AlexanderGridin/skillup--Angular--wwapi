@@ -44,6 +44,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
 import { CommentsStoreService } from './services/comments-store/comments-store.service';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentsListComponent } from './components/comments-list/comments-list.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CommentsListComponent } from './components/comments-list/comments-list.
     PostFormComponent,
     CommentComponent,
     CommentsListComponent,
+    AddPostComponent,
   ],
   imports: [
     BrowserModule,
