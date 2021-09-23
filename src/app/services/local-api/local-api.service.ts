@@ -21,6 +21,10 @@ export class LocalApiService {
     return this.http.post<User>(`${this.baseUrl}/users`, userFormData);
   }
 
+  public updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/users/${user.id}`, user);
+  }
+
   public getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.baseUrl}/api/posts`);
   }

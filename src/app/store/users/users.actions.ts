@@ -23,4 +23,13 @@ export namespace UsersActions {
     props<{ user: User }>()
   );
   export const unsetCurrentUser = createAction('UNSET_CURRENT_USER');
+
+  export const updateUser = createAction(
+    'UPDATE_USER',
+    props<{ user: User }>()
+  );
+  export const updateUserSuccess = createAction(
+    'UPDATE_USER_SUCCESS',
+    props<{ user: User }>()
+  );
 }

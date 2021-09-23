@@ -54,7 +54,29 @@ const _usersReducer = createReducer(
       ...store,
       currentUser: null,
     };
-  })
+  }),
+
+  on(
+    UsersActions.updateUserSuccess,
+    (store: UsersStore, { user }: { user: User }): UsersStore => {
+      if (!store.users) {
+        return {
+          ...store,
+        };
+      }
+
+      let usersFromStore: User[] = [...store.users];
+      let users = usersFromStore.map(
+        (userFromStore: User): User =>
+          userFromStore.id === user.id ? user : userFromStore
+      );
+
+      return {
+        ...store,
+        users,
+      };
+    }
+  )
 );
 
 export const usersReducer = (store: UsersStore | undefined, action: Action) =>

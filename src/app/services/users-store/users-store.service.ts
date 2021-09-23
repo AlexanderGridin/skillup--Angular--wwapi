@@ -22,6 +22,10 @@ export class UsersStoreService {
     this.store$.dispatch(UsersActions.addUser({ userFormData }));
   }
 
+  public updateUser(user: User): void {
+    this.store$.dispatch(UsersActions.updateUser({ user }));
+  }
+
   public getUserById(id: number): Observable<User | null> {
     return this.store$.select(UsersSelectors.getUserById(id));
   }

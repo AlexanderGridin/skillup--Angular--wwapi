@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user-page.component.css'],
 })
 export class UserPageComponent implements OnInit, OnDestroy {
-  public user!: User | undefined;
+  public user!: User;
 
   private getUsersSub!: Subscription;
   private handleRouteParamsSub!: Subscription;
@@ -48,7 +48,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.getUserByIdSub = this.usersStoreSerivce.getUserById(id).subscribe({
       next: (user: User | null): void => {
         if (user) {
-          this.user = user;
+          this.user = { ...user };
           this.usersStoreSerivce.setCurrentUser(user);
         }
       },
