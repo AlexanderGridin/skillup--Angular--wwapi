@@ -42,6 +42,7 @@ import { PageSectionComponent } from './components/page-section/page-section.com
 import { MessageComponent } from './components/message/message.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { CommentsStoreService } from './services/comments-store/comments-store.service';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CommentsStoreService } from './services/comments-store/comments-store.s
     PageSectionComponent,
     MessageComponent,
     PostFormComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
