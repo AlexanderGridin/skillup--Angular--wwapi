@@ -20,11 +20,6 @@ export class UserPostsComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    // this.http.delete('http://localhost:3000/api/posts/3').subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-    //   },
-    // });
     this.loadPosts();
   }
 

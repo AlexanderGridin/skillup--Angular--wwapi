@@ -13,4 +13,38 @@
       #title
     ></kendo-textbox>
   </kendo-formfield>
+
+  <kendo-formfield class="post-form__body post-form__item">
+    <kendo-label class="post-form__label" [for]="body" text="Post body">
+      <span class="post-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textarea
+      [rows]="10"
+      class="post-form__control post-form__control--body"
+      formControlName="body"
+      placeholder="Body"
+      #body
+    >
+    </kendo-textarea>
+  </kendo-formfield>
+
+  <div class="post-form__actions">
+    <button
+      class="post-form__button"
+      type="submit"
+      kendoButton
+      [primary]="true"
+    >
+      Save changes
+    </button>
+    <button
+      class="post-form__button"
+      type="button"
+      kendoButton
+      (click)="handleFormCancel($event)"
+    >
+      Cancel
+    </button>
+  </div>
 </form>

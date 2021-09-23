@@ -1,0 +1,53 @@
+.post-form__item {
+  display: block;
+}
+
+.post-form__item + .post-form__item {
+  margin-top: 15px;
+}
+
+.post-form__field-group {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+}
+
+.post-form__field-group .post-form__item + .post-form__item {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.post-form__address .post-form__item {
+  width: 25%;
+}
+
+.post-form__company .post-form__item {
+  width: 50%;
+}
+
+.post-form__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.post-form__required {
+  color: #ff6358;
+}
+
+.post-form__control {
+  width: 100%;
+}
+
+.post-form__actions {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  margin: -5px;
+}
+
+.post-form__button {
+  margin: 5px;
+}

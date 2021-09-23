@@ -23,6 +23,10 @@
   </div>
 
   <div class="post__edit-form" *ngIf="isEditing">
-    <post-form></post-form>
+    <post-form
+      [post]="post"
+      (onSubmit)="handlePostFormSubmit($event)"
+      (onCancel)="handlePostFormCancel()"
+    ></post-form>
   </div>
 </div>

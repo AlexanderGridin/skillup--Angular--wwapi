@@ -17,6 +17,14 @@ export class PostComponent {
     this.isEditing = true;
   }
 
+  public handlePostFormSubmit(updatedPost: Post): void {
+    console.log(updatedPost);
+  }
+
+  public handlePostFormCancel(): void {
+    this.isEditing = false;
+  }
+
   public removePost(): void {
     this.postsStoreService.removePostById(this.post.id);
   }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Post } from 'src/app/interfaces/post';
+import { PostFormData } from 'src/app/interfaces/form-data/post-form-data';
 
 @Component({
   selector: 'post-form',
@@ -7,22 +9,47 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./post-form.component.css'],
 })
 export class PostFormComponent implements OnInit {
+  @Input() public post!: Post;
+
+  private titleFormControlInitalValue!: string;
+  private bodyFormControlInitalValue!: string;
+
   public form!: FormGroup;
+
+  @Output() private onSubmit: EventEmitter<Post> = new EventEmitter<Post>();
+  @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor() {}
 
   public ngOnInit(): void {
+    this.titleFormControlInitalValue = this.post ? this.post.title : '';
+    this.bodyFormControlInitalValue = this.post ? this.post.body : '';
+
     this.initForm();
   }
 
   public initForm(): void {
     this.form = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      body: new FormControl('', [Validators.required]),
+      title: new FormControl(this.titleFormControlInitalValue, [
+        Validators.required,
+      ]),
+      body: new FormControl(this.bodyFormControlInitalValue, [
+        Validators.required,
+      ]),
     });
   }
 
   public handleFormSubmit(): void {
-    console.log(this.form.value);
+    let updatedPost: Post = {
+      ...this.form.value,
+      userId: this.post.userId,
+      id: this.post.id,
+    };
+
+    this.onSubmit.emit(updatedPost);
+  }
+
+  public handleFormCancel(event: Event): void {
+    this.onCancel.emit(event);
   }
 }
