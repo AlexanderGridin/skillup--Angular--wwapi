@@ -46,6 +46,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CommentsListComponent } from './components/comments-list/comments-list.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     CommentsListComponent,
     AddPostComponent,
     UserInfoComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
