@@ -1,7 +1,10 @@
 .user-page__actions {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.user-page__actions .user-page__button {
+.user-page__actions-item {
   margin: 5px;
 }

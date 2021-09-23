@@ -1,1 +1,20 @@
-<p>user-info works!</p>
+<div class="user-info" *ngIf="userForRender">
+  <div class="user-info__field">
+    <strong>Full name:</strong> {{ userForRender.fullName }}
+  </div>
+  <div class="user-info__field">
+    <strong>Email:</strong> {{ userForRender.email }}
+  </div>
+  <div class="user-info__field">
+    <strong>Address:</strong> {{ userForRender.address }}
+  </div>
+  <div class="user-info__field">
+    <strong>Phone:</strong> {{ userForRender.phone }}
+  </div>
+  <div class="user-info__field">
+    <strong>Website:</strong> {{ userForRender.website }}
+  </div>
+  <div class="user-info__field">
+    <strong>Company info:</strong> {{ userForRender.companyInfo }}
+  </div>
+</div>
