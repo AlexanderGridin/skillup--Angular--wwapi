@@ -1,1 +1,24 @@
-<p>edit-user works!</p>
+<div class="edit-user">
+  <div class="edit-user__actions">
+    <button type="button" kendoButton [primary]="true" (click)="showModal()">
+      Edit user info
+    </button>
+  </div>
+
+  <kendo-dialog
+    class="edit-user__dialog"
+    *ngIf="isModalVisible"
+    [title]="modalTitle"
+    [minWidth]="modalMinWidth"
+    [width]="modalWidth"
+    (close)="closeModal()"
+  >
+    <user-form
+      class="edit-user__form"
+      [user]="user"
+      [submitButtonText]="'Edit user'"
+      (onSubmit)="handleFormSubmit($event)"
+      (onCancel)="closeModal()"
+    ></user-form>
+  </kendo-dialog>
+</div>

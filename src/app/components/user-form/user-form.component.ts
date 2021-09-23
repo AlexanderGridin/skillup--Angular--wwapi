@@ -8,7 +8,7 @@ import { User } from 'src/app/interfaces/user/user';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit {
-  @Input() private isEdit: boolean = false;
+  @Input() public user!: User;
   @Input() public submitButtonText: string = 'Submit';
   @Input() public cancelButtonText: string = 'Cancel';
 
@@ -16,53 +16,113 @@ export class UserFormComponent implements OnInit {
 
   public phoneFormControlMask: string = '+38(999) 00-00-000';
 
+  private usernameFormControlInitialValue!: string;
+  private firstNameFormControlInitialvalue!: string;
+  private lastNameFormControlInitialValue!: string;
+  private emailFormControlInitialValue!: string;
+  private streetFromControlInitialValue!: string;
+  private buildingFormControlInitialValue!: string;
+  private cityFormControlInitialValue!: string;
+  private zipcodeFormControlInitialValue!: string;
+  private phoneFormControlInitialValue!: string;
+  private websiteFormControlInitialValue!: string;
+  private companyNameFormControlInitialValue!: string;
+  private companyScopeFormControlInitialValue!: string;
+
   @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() private onSubmit: EventEmitter<User | null> =
     new EventEmitter<User | null>();
 
   public ngOnInit(): void {
+    this.setFormControlsInitialValues();
     this.initForm();
+  }
+
+  public setFormControlsInitialValues(): void {
+    this.usernameFormControlInitialValue = this.user ? this.user.username : '';
+    this.firstNameFormControlInitialvalue = this.user
+      ? this.user.firstName
+      : '';
+    this.lastNameFormControlInitialValue = this.user ? this.user.lastName : '';
+    this.emailFormControlInitialValue = this.user ? this.user.email : '';
+    this.streetFromControlInitialValue = this.user
+      ? this.user.address.street
+      : '';
+    this.buildingFormControlInitialValue = this.user
+      ? this.user.address.building
+      : '';
+    this.cityFormControlInitialValue = this.user ? this.user.address.city : '';
+    this.zipcodeFormControlInitialValue = this.user
+      ? this.user.address.zipcode
+      : '';
+    this.phoneFormControlInitialValue = this.user ? this.user.phone : '';
+    this.websiteFormControlInitialValue = this.user ? this.user.website : '';
+    this.companyNameFormControlInitialValue = this.user
+      ? this.user.company.name
+      : '';
+    this.companyScopeFormControlInitialValue = this.user
+      ? this.user.company.scope
+      : '';
   }
 
   public initForm(): void {
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.required]),
+      username: new FormControl(this.usernameFormControlInitialValue, [
+        Validators.required,
+      ]),
 
-      firstName: new FormControl('', [
+      firstName: new FormControl(this.firstNameFormControlInitialvalue, [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(15),
       ]),
 
-      lastName: new FormControl('', [
+      lastName: new FormControl(this.lastNameFormControlInitialValue, [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(15),
       ]),
 
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl(this.emailFormControlInitialValue, [
+        Validators.required,
+        Validators.email,
+      ]),
 
       address: new FormGroup({
-        street: new FormControl('', [
+        street: new FormControl(this.streetFromControlInitialValue, [
           Validators.required,
           Validators.minLength(5),
         ]),
 
-        building: new FormControl('', [Validators.required]),
+        building: new FormControl(this.buildingFormControlInitialValue, [
+          Validators.required,
+        ]),
 
-        city: new FormControl('', [Validators.required]),
+        city: new FormControl(this.cityFormControlInitialValue, [
+          Validators.required,
+        ]),
 
-        zipcode: new FormControl('', [Validators.required]),
+        zipcode: new FormControl(this.zipcodeFormControlInitialValue, [
+          Validators.required,
+        ]),
       }),
 
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl(this.phoneFormControlInitialValue, [
+        Validators.required,
+      ]),
 
-      website: new FormControl('', [Validators.required]),
+      website: new FormControl(this.websiteFormControlInitialValue, [
+        Validators.required,
+      ]),
 
       company: new FormGroup({
-        name: new FormControl('', [Validators.required]),
+        name: new FormControl(this.companyNameFormControlInitialValue, [
+          Validators.required,
+        ]),
 
-        scope: new FormControl('', [Validators.required]),
+        scope: new FormControl(this.companyScopeFormControlInitialValue, [
+          Validators.required,
+        ]),
       }),
     });
   }
