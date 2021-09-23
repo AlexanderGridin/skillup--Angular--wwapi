@@ -43,6 +43,7 @@ import { MessageComponent } from './components/message/message.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { CommentsStoreService } from './services/comments-store/comments-store.service';
 import { CommentComponent } from './components/comment/comment.component';
+import { CommentsListComponent } from './components/comments-list/comments-list.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CommentComponent } from './components/comment/comment.component';
     MessageComponent,
     PostFormComponent,
     CommentComponent,
+    CommentsListComponent,
   ],
   imports: [
     BrowserModule,
