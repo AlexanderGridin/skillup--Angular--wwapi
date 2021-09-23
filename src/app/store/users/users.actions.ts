@@ -17,4 +17,10 @@ export namespace UsersActions {
     'LOAD_USERS_SUCCESS',
     props<{ users: User[] }>()
   );
+
+  export const setCurrentUser = createAction(
+    'SET_CURRENT_USER',
+    props<{ user: User }>()
+  );
+  export const unsetCurrentUser = createAction('UNSET_CURRENT_USER');
 }

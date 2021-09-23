@@ -7,11 +7,19 @@ export namespace PostsSelectors {
 
   export const getPosts = createSelector(
     store,
-    (store: PostsStore): Post[] => store.posts
+    (store: PostsStore): Post[] | null => (store.posts ? store.posts : null)
   );
 
   export const getPostsByUserId = (userId: number) =>
-    createSelector(store, (store: PostsStore): Post[] =>
-      store.posts.filter((post: Post): boolean => post.userId === userId)
-    );
+    createSelector(store, (store: PostsStore): Post[] | null => {
+      if (!store.posts) {
+        return null;
+      }
+
+      let findedPosts: Post[] = store.posts.filter(
+        (post: Post): boolean => post.userId === userId
+      );
+
+      return findedPosts.length > 0 ? findedPosts : null;
+    });
 }

@@ -30,26 +30,27 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   private getUsers(): void {
     this.getUsersSub = this.usersStoreSerivce.getUsers().subscribe({
-      next: this.handleUsersFromStore.bind(this),
+      next: (users: User[] | null): void => {
+        !users && this.usersStoreSerivce.loadUsers();
+      },
     });
-  }
-
-  private handleUsersFromStore(users: User[]): void {
-    users.length === 0 && this.usersStoreSerivce.loadUsers();
   }
 
   private handleRouteParams(): void {
     this.handleRouteParamsSub = this.activatedRoute.params.subscribe({
       next: (params: Params): void => {
-        this.getUserById(+params.id);
+        this.initUserById(+params.id);
       },
     });
   }
 
-  private getUserById(id: number): void {
+  private initUserById(id: number): void {
     this.getUserByIdSub = this.usersStoreSerivce.getUserById(id).subscribe({
-      next: (user: User | undefined): void => {
-        this.user = user;
+      next: (user: User | null): void => {
+        if (user) {
+          this.user = user;
+          this.usersStoreSerivce.setCurrentUser(user);
+        }
       },
     });
   }
@@ -62,5 +63,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.getUsersSub.unsubscribe();
     this.handleRouteParamsSub.unsubscribe();
     this.getUserByIdSub.unsubscribe();
+
+    this.usersStoreSerivce.unsetCurrentUser();
   }
 }

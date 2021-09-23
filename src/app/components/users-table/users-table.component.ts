@@ -41,7 +41,12 @@ export class UsersTableComponent implements OnInit, OnDestroy {
 
   private getUsers(): void {
     this.getUsersSub = this.usersStoreService.getUsers().subscribe({
-      next: this.handleUsersFromStore.bind(this),
+      // next: this.handleUsersFromStore.bind(this),
+      next: (users: User[] | null): void => {
+        users
+          ? this.setUsersForRender(users)
+          : this.usersStoreService.loadUsers();
+      },
     });
   }
 

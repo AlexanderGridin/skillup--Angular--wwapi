@@ -4,7 +4,7 @@ import { CommentsStore } from 'src/app/interfaces/store/comments-store';
 import { Comment } from 'src/app/interfaces/comment';
 
 const initialStore: CommentsStore = {
-  comments: [],
+  comments: null,
 };
 
 const _commentsReducer = createReducer(

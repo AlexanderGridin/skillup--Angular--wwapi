@@ -4,7 +4,7 @@ import { PostsStore } from 'src/app/interfaces/store/posts-store';
 import { Post } from 'src/app/interfaces/post';
 
 const initialStore: PostsStore = {
-  posts: [],
+  posts: null,
 };
 
 const _postsReducer = createReducer(
@@ -22,11 +22,36 @@ const _postsReducer = createReducer(
   on(
     PostsActions.updatePostSuccess,
     (store: PostsStore, { post }: { post: Post }): PostsStore => {
+      if (!store.posts) {
+        return {
+          ...store,
+        };
+      }
+
       let postsFromStore: Post[] = [...store.posts];
       let posts: Post[] = postsFromStore.map(
         (postFromStore: Post): Post =>
           postFromStore.id === post.id ? post : postFromStore
       );
+
+      return {
+        ...store,
+        posts,
+      };
+    }
+  ),
+
+  on(
+    PostsActions.addPostSuccess,
+    (store: PostsStore, { post }: { post: Post }): PostsStore => {
+      if (!store.posts) {
+        return {
+          ...store,
+        };
+      }
+
+      let postsFromStore: Post[] = [...store.posts];
+      let posts = [...postsFromStore, post];
 
       return {
         ...store,

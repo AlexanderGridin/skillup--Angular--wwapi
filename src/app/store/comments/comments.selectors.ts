@@ -6,9 +6,15 @@ export namespace CommentsSelectors {
   export const store = createFeatureSelector<CommentsStore>('comments');
 
   export const getCommentsByPostId = (postId: number) =>
-    createSelector(store, (store: CommentsStore): Comment[] =>
-      store.comments.filter(
+    createSelector(store, (store: CommentsStore): Comment[] | null => {
+      if (!store.comments) {
+        return null;
+      }
+
+      let commentsOfPost: Comment[] = store.comments.filter(
         (comment: Comment): boolean => comment.postId === postId
-      )
-    );
+      );
+
+      return commentsOfPost.length > 0 ? commentsOfPost : null;
+    });
 }

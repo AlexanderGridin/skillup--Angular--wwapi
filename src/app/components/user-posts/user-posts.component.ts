@@ -1,44 +1,53 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Post } from 'src/app/interfaces/post';
 import { User } from 'src/app/interfaces/user/user';
 import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
-
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'user-posts',
   templateUrl: './user-posts.component.html',
   styleUrls: ['./user-posts.component.css'],
 })
-export class UserPostsComponent implements OnInit {
+export class UserPostsComponent implements OnInit, OnDestroy {
   @Input() public user!: User;
   public posts!: Post[];
 
-  constructor(
-    private postsStoreService: PostsStoreService,
-    private http: HttpClient
-  ) {}
+  private getPostsSub!: Subscription;
+  private getPostsOfUserSub!: Subscription;
+
+  constructor(private postsStoreService: PostsStoreService) {}
 
   public ngOnInit(): void {
-    this.loadPosts();
+    this.getPosts();
   }
 
-  public loadPosts(): void {
-    this.postsStoreService.getPosts().subscribe({
-      next: (posts: Post[]): void => {
-        posts.length === 0
-          ? this.postsStoreService.loadPosts()
-          : this.getPostsOfUser();
-      },
+  public getPosts(): void {
+    this.getPostsSub = this.postsStoreService.getPosts().subscribe({
+      next: this.processReceivedPostsFromStore.bind(this),
     });
   }
 
+  public processReceivedPostsFromStore(posts: Post[] | null): void {
+    posts ? this.getPostsOfUser() : this.postsStoreService.loadPosts();
+  }
+
   public getPostsOfUser(): void {
-    this.user &&
-      this.postsStoreService.getPostsByUserId(this.user.id).subscribe({
-        next: (posts: Post[]): void => {
-          this.posts = posts;
-        },
-      });
+    if (this.user) {
+      this.getPostsOfUserSub = this.postsStoreService
+        .getPostsByUserId(this.user.id)
+        .subscribe({
+          next: this.processReceivedPostsOfUserFromStore.bind(this),
+        });
+    }
+  }
+
+  public processReceivedPostsOfUserFromStore(posts: Post[] | null): void {
+    posts ? (this.posts = posts) : (this.posts = []);
+  }
+
+  public ngOnDestroy(): void {
+    this.getPostsSub.unsubscribe();
+    this.getPostsOfUserSub.unsubscribe();
   }
 }

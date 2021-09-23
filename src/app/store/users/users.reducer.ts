@@ -4,7 +4,8 @@ import { UsersStore } from 'src/app/interfaces/store/users-store';
 import { User } from 'src/app/interfaces/user/user';
 
 const initalStore: UsersStore = {
-  users: [],
+  users: null,
+  currentUser: null,
 };
 
 const _usersReducer = createReducer(
@@ -12,6 +13,12 @@ const _usersReducer = createReducer(
   on(
     UsersActions.addUserSuccess,
     (store: UsersStore, { user }: { user: User }): UsersStore => {
+      if (!store.users) {
+        return {
+          ...store,
+        };
+      }
+
       const usersFromStore: User[] = [...store.users];
       const users: User[] = [...usersFromStore, user];
 
@@ -30,7 +37,24 @@ const _usersReducer = createReducer(
         users,
       };
     }
-  )
+  ),
+
+  on(
+    UsersActions.setCurrentUser,
+    (store: UsersStore, { user }: { user: User }): UsersStore => {
+      return {
+        ...store,
+        currentUser: user,
+      };
+    }
+  ),
+
+  on(UsersActions.unsetCurrentUser, (store: UsersStore): UsersStore => {
+    return {
+      ...store,
+      currentUser: null,
+    };
+  })
 );
 
 export const usersReducer = (store: UsersStore | undefined, action: Action) =>

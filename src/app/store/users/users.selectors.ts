@@ -7,11 +7,19 @@ export namespace UsersSelectors {
 
   export const getUsers = createSelector(
     store,
-    (store: UsersStore): User[] => store.users
+    (store: UsersStore): User[] | null => (store.users ? store.users : null)
   );
 
   export const getUserById = (id: number) =>
-    createSelector(store, (store: UsersStore): User | undefined =>
-      store.users.find((user: User): boolean => user.id === id)
-    );
+    createSelector(store, (store: UsersStore): User | null => {
+      if (!store.users) {
+        return null;
+      }
+
+      let findedUser = store.users.find(
+        (user: User): boolean => user.id === id
+      );
+
+      return findedUser ? findedUser : null;
+    });
 }

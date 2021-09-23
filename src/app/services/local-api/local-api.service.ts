@@ -5,6 +5,7 @@ import { User } from 'src/app/interfaces/user/user';
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 import { Post } from 'src/app/interfaces/post';
 import { Comment } from 'src/app/interfaces/comment';
+import { PostDTO } from 'src/app/interfaces/post-dto';
 
 @Injectable()
 export class LocalApiService {
@@ -34,5 +35,9 @@ export class LocalApiService {
 
   public getComments(): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.baseUrl}/api/comments`);
+  }
+
+  public addPost(post: PostDTO): Observable<Post> {
+    return this.http.post<Post>(`${this.baseUrl}/api/posts`, post);
   }
 }

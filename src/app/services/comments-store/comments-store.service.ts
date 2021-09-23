@@ -13,7 +13,7 @@ export class CommentsStoreService {
     this.store$.dispatch(CommentsActions.loadComments());
   }
 
-  public getCommentsByPostId(postId: number): Observable<Comment[]> {
+  public getCommentsByPostId(postId: number): Observable<Comment[] | null> {
     return this.store$.select(CommentsSelectors.getCommentsByPostId(postId));
   }
 }

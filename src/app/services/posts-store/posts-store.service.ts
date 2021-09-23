@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Post } from 'src/app/interfaces/post';
 import { PostsActions } from 'src/app/store/posts/posts.actions';
 import { PostsSelectors } from 'src/app/store/posts/posts.selectors';
+import { PostDTO } from 'src/app/interfaces/post-dto';
 
 @Injectable()
 export class PostsStoreService {
@@ -13,11 +14,11 @@ export class PostsStoreService {
     this.store$.dispatch(PostsActions.loadPosts());
   }
 
-  public getPosts(): Observable<Post[]> {
+  public getPosts(): Observable<Post[] | null> {
     return this.store$.select(PostsSelectors.getPosts);
   }
 
-  public getPostsByUserId(userId: number): Observable<Post[]> {
+  public getPostsByUserId(userId: number): Observable<Post[] | null> {
     return this.store$.select(PostsSelectors.getPostsByUserId(userId));
   }
 
@@ -27,5 +28,9 @@ export class PostsStoreService {
 
   public updatePost(post: Post): void {
     this.store$.dispatch(PostsActions.updatePost({ post }));
+  }
+
+  public addPost(post: PostDTO): void {
+    this.store$.dispatch(PostsActions.addPost({ post }));
   }
 }

@@ -14,7 +14,7 @@ export class UsersStoreService {
     this.store$.dispatch(UsersActions.loadUsers());
   }
 
-  public getUsers(): Observable<User[]> {
+  public getUsers(): Observable<User[] | null> {
     return this.store$.select(UsersSelectors.getUsers);
   }
 
@@ -22,7 +22,15 @@ export class UsersStoreService {
     this.store$.dispatch(UsersActions.addUser({ userFormData }));
   }
 
-  public getUserById(id: number): Observable<User | undefined> {
+  public getUserById(id: number): Observable<User | null> {
     return this.store$.select(UsersSelectors.getUserById(id));
+  }
+
+  public setCurrentUser(user: User): void {
+    this.store$.dispatch(UsersActions.setCurrentUser({ user }));
+  }
+
+  public unsetCurrentUser(): void {
+    this.store$.dispatch(UsersActions.unsetCurrentUser());
   }
 }
