@@ -31,6 +31,17 @@ export class PostsEffects {
     )
   );
 
+  public updatePost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PostsActions.updatePost),
+      mergeMap((action) =>
+        this.localApiSerivce
+          .updatePost(action.post)
+          .pipe(map((post) => PostsActions.updatePostSuccess({ post })))
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private localApiSerivce: LocalApiService

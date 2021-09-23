@@ -17,6 +17,22 @@ const _postsReducer = createReducer(
         posts,
       };
     }
+  ),
+
+  on(
+    PostsActions.updatePostSuccess,
+    (store: PostsStore, { post }: { post: Post }): PostsStore => {
+      let postsFromStore: Post[] = [...store.posts];
+      let posts: Post[] = postsFromStore.map(
+        (postFromStore: Post): Post =>
+          postFromStore.id === post.id ? post : postFromStore
+      );
+
+      return {
+        ...store,
+        posts,
+      };
+    }
   )
 );
 

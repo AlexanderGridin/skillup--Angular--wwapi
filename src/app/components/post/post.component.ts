@@ -18,7 +18,7 @@ export class PostComponent {
   }
 
   public handlePostFormSubmit(updatedPost: Post): void {
-    console.log(updatedPost);
+    this.postsStoreService.updatePost(updatedPost);
   }
 
   public handlePostFormCancel(): void {

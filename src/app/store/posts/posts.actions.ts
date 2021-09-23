@@ -12,4 +12,13 @@ export namespace PostsActions {
     'REMOVE_POST_BY_ID',
     props<{ postId: number }>()
   );
+
+  export const updatePost = createAction(
+    'UPDATE_POST',
+    props<{ post: Post }>()
+  );
+  export const updatePostSuccess = createAction(
+    'UPDATE_POST_SUCCESS',
+    props<{ post: Post }>()
+  );
 }

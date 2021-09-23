@@ -23,6 +23,9 @@ export class PostsStoreService {
 
   public removePostById(postId: number): void {
     this.store$.dispatch(PostsActions.removePostById({ postId }));
-    console.log(postId);
+  }
+
+  public updatePost(post: Post): void {
+    this.store$.dispatch(PostsActions.updatePost({ post }));
   }
 }
