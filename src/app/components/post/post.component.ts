@@ -15,7 +15,7 @@ export class PostComponent implements OnInit {
 
   public comments!: Comment[];
   public isCommentsVisible: boolean = false;
-  public commentsTogglerText: string = 'Show comments';
+  public commentsVisibilityTogglerText: string = 'Show comments';
 
   constructor(
     private postsStoreService: PostsStoreService,
@@ -38,7 +38,7 @@ export class PostComponent implements OnInit {
 
   public toggleCommentsVisibility(): void {
     this.isCommentsVisible = !this.isCommentsVisible;
-    this.commentsTogglerText = this.isCommentsVisible
+    this.commentsVisibilityTogglerText = this.isCommentsVisible
       ? 'Hide comments'
       : 'Show comments';
   }
