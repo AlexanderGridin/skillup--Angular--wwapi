@@ -30,8 +30,7 @@ export class UserFormComponent implements OnInit {
   private companyScopeFormControlInitialValue!: string;
 
   @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
-  @Output() private onSubmit: EventEmitter<User | null> =
-    new EventEmitter<User | null>();
+  @Output() private onSubmit: EventEmitter<User> = new EventEmitter<User>();
 
   public ngOnInit(): void {
     this.initFormControlsInitialValues();
@@ -135,7 +134,6 @@ export class UserFormComponent implements OnInit {
 
   private handleFormInvalidStatus(): void {
     this.markAllInvalidControlsAsTouchedOf(this.form);
-    this.onSubmit.emit(null);
   }
 
   private markAllInvalidControlsAsTouchedOf(formGroup: FormGroup): void {

@@ -369,6 +369,25 @@
         "scope": "Finance"
       },
       "id": 2
+    },
+    {
+      "username": "test",
+      "firstName": "testtt",
+      "lastName": "testtt",
+      "email": "test@test",
+      "address": {
+        "street": "asdfasdf",
+        "building": "asdfasdf",
+        "city": "asdfasdf",
+        "zipcode": "asdfasdf"
+      },
+      "phone": "+383242342342",
+      "website": "fasdfasdf",
+      "company": {
+        "name": "asdfasdf",
+        "scope": "asdfasdf"
+      },
+      "id": 3
     }
   ],
   "profile": {
