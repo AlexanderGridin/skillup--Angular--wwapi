@@ -14,6 +14,7 @@ import { Comment } from 'src/app/interfaces/comment';
 })
 export class PostComponent implements OnInit, OnDestroy {
   @Input() post!: Post;
+
   public comments!: Comment[];
 
   public isEditing: boolean = false;
