@@ -14,8 +14,6 @@ export class UserFormComponent implements OnInit {
 
   public form!: FormGroup;
 
-  public phoneFormControlMask: string = '+38(999) 00-00-000';
-
   private usernameFormControlInitialValue!: string;
   private firstNameFormControlInitialvalue!: string;
   private lastNameFormControlInitialValue!: string;
@@ -28,6 +26,8 @@ export class UserFormComponent implements OnInit {
   private websiteFormControlInitialValue!: string;
   private companyNameFormControlInitialValue!: string;
   private companyScopeFormControlInitialValue!: string;
+
+  public phoneFormControlMask: string = '+38(999) 00-00-000';
 
   @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() private onSubmit: EventEmitter<User> = new EventEmitter<User>();
