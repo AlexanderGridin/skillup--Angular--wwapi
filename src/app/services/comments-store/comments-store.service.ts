@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
+import { Store } from '@ngrx/store';
 import { CommentsActions } from 'src/app/store/comments/comments.actions';
-import { Comment } from 'src/app/interfaces/comment';
 import { CommentsSelectors } from 'src/app/store/comments/comments.selectors';
+
+import { Comment } from 'src/app/interfaces/comment';
 
 @Injectable()
 export class CommentsStoreService {
