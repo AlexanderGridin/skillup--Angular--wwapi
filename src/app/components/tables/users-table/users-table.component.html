@@ -1,7 +1,4 @@
-<div
-  class="users-table"
-  [ngClass]="{ 'users-table--loading-users': !isUsersReadyForRender }"
->
+<div class="users-table">
   <kendo-grid
     [data]="usersForRender"
     scrollable="none"
@@ -15,5 +12,5 @@
     <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
   </kendo-grid>
 
-  <loader *ngIf="!isUsersReadyForRender"></loader>
+  <loader *ngIf="!isUsersReadyForRender">Loading users...</loader>
 </div>

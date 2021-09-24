@@ -17,6 +17,13 @@
   width: 75px;
 }
 
+.post__badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0, 0);
+}
+
 .post__title {
   margin-bottom: 15px;
 }

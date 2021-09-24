@@ -1,5 +1,7 @@
 <div class="post">
-  <div class="post__id">id: {{ post.id }}</div>
+  <kendo-badge class="post__badge" shape="rectangle"
+    >id: {{ post.id }}</kendo-badge
+  >
 
   <div class="post__content" *ngIf="!isEditing">
     <h3 class="post__title">{{ post.title }} - [uid: {{ post.userId }}]</h3>
