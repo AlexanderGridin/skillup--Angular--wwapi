@@ -8,12 +8,12 @@ import {
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { UserMapper } from 'src/app/mappers/UserMapper';
-
 import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
 import { User } from 'src/app/interfaces/user/user';
 import { UserOfUsersTable } from 'src/app/interfaces/user/user-of-users-table';
+
+import { UserMapper } from 'src/app/mappers/UserMapper';
 
 @Component({
   selector: 'users-table',
@@ -41,12 +41,12 @@ export class UsersTableComponent implements OnInit, OnDestroy {
 
   private getUsers(): void {
     this.getUsersSub = this.usersStoreService.getUsers().subscribe({
-      next: (users: User[] | null): void => {
-        users
-          ? this.setUsersForRender(users)
-          : this.usersStoreService.loadUsers();
-      },
+      next: this.processUsersFromStore.bind(this),
     });
+  }
+
+  private processUsersFromStore(users: User[] | null): void {
+    users ? this.setUsersForRender(users) : this.usersStoreService.loadUsers();
   }
 
   private setUsersForRender(users: User[]): void {
