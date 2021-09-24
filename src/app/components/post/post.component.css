@@ -1,20 +1,20 @@
 .post {
-  padding: 10px;
   border: 1px solid #ddd;
+  padding: 10px;
   position: relative;
 }
 
 .post__id {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 75px;
-  height: 25px;
-  display: flex;
   align-items: center;
-  justify-content: center;
   background: green;
   color: white;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 75px;
 }
 
 .post__title {

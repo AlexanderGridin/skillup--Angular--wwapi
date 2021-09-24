@@ -13,10 +13,11 @@ import { Subscription } from 'rxjs';
 })
 export class PostComponent implements OnInit, OnDestroy {
   @Input() post!: Post;
-  public isEditing: boolean = false;
-
   public comments!: Comment[];
+
+  public isEditing: boolean = false;
   public isCommentsVisible: boolean = false;
+
   public commentsVisibilityTogglerText: string = 'Show comments';
 
   private getCommentsSub!: Subscription;
@@ -30,7 +31,7 @@ export class PostComponent implements OnInit, OnDestroy {
     this.getComments();
   }
 
-  public getComments(): void {
+  private getComments(): void {
     this.getCommentsSub = this.commetnsStoreService
       .getCommentsByPostId(this.post.id)
       .subscribe({
@@ -38,7 +39,7 @@ export class PostComponent implements OnInit, OnDestroy {
       });
   }
 
-  public processCommentsOfPostFromStore(
+  private processCommentsOfPostFromStore(
     commentsFormStore: Comment[] | null
   ): void {
     commentsFormStore
