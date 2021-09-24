@@ -15,7 +15,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
   public modalMinWidth: number = 250;
   public modalWidth: number = 991;
 
-  private getUsersSub!: Subscription;
+  private usersUpdatesSub!: Subscription;
 
   constructor(
     private usersStoreService: UsersStoreService,
@@ -23,11 +23,11 @@ export class AddUserComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.getUsers();
+    this.subscribeForUsersUpdates();
   }
 
-  private getUsers(): void {
-    this.getUsersSub = this.usersStoreService.getUsers().subscribe({
+  private subscribeForUsersUpdates(): void {
+    this.usersUpdatesSub = this.usersStoreService.getUsers().subscribe({
       next: this.closeModal.bind(this),
     });
   }
@@ -51,6 +51,6 @@ export class AddUserComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.getUsersSub.unsubscribe();
+    this.usersUpdatesSub.unsubscribe();
   }
 }
