@@ -58,11 +58,7 @@ export class PostComponent implements OnInit, OnDestroy {
     this.isEditing = true;
   }
 
-  public handlePostFormSubmit(updatedPost: Post | PostFormData): void {
-    this.postsStoreService.updatePost(updatedPost as Post);
-  }
-
-  public handlePostFormCancel(): void {
+  public handleEditingCancelation(): void {
     this.isEditing = false;
   }
 

@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "title": "This is test post title 223",
-      "body": "This is a test post Body 23",
+      "title": "This is test post title ",
+      "body": "This is a test post Body",
       "userId": 1,
       "id": 2
     },

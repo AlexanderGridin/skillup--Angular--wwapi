@@ -21,14 +21,11 @@
     </div>
   </div>
 
-  <div class="post__edit-form" *ngIf="isEditing">
-    <post-form
-      [post]="post"
-      [submitButtonText]="'Save changes'"
-      (onSubmit)="handlePostFormSubmit($event)"
-      (onCancel)="handlePostFormCancel()"
-    ></post-form>
-  </div>
+  <edit-post
+    [post]="post"
+    *ngIf="isEditing"
+    (onEditingCancelled)="handleEditingCancelation()"
+  ></edit-post>
 
   <div class="post__comments" *ngIf="comments && comments.length > 0">
     <div class="post__comments-actions" *ngIf="!isEditing">

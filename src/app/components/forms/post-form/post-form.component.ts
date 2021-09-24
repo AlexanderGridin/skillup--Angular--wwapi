@@ -18,9 +18,9 @@ export class PostFormComponent implements OnInit {
   private titleFormControlInitalValue!: string;
   private bodyFormControlInitalValue!: string;
 
-  @Output() private onSubmit: EventEmitter<Post | PostFormData> =
-    new EventEmitter<Post | PostFormData>();
-  @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output() private onSubmit: EventEmitter<PostFormData> =
+    new EventEmitter<PostFormData>();
+  @Output() private onCancel: EventEmitter<void> = new EventEmitter<void>();
 
   public ngOnInit(): void {
     this.initFormControlsInitialValues();
@@ -71,20 +71,10 @@ export class PostFormComponent implements OnInit {
   }
 
   private handleFormValidStatus(): void {
-    this.post
-      ? this.onSubmit.emit(this.createPostFromFormData(this.form.value))
-      : this.onSubmit.emit(this.form.value);
+    this.onSubmit.emit(this.form.value);
   }
 
-  private createPostFromFormData(formData: PostFormData): Post {
-    return {
-      ...this.form.value,
-      userId: this.post.userId,
-      id: this.post.id,
-    };
-  }
-
-  public handleFormCancel(event: Event): void {
-    this.onCancel.emit(event);
+  public handleFormCancel(): void {
+    this.onCancel.emit();
   }
 }
