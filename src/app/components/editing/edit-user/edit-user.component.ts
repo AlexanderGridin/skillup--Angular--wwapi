@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
+
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 import { User } from 'src/app/interfaces/user/user';
-
-import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
 @Component({
   selector: 'edit-user',
