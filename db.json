@@ -7,8 +7,8 @@
       "id": 2
     },
     {
-      "title": "Test post title 2",
-      "body": "Test post body 2",
+      "title": "Test post title ",
+      "body": "Test post body ",
       "userId": 1,
       "id": 4
     },
@@ -373,7 +373,7 @@
     {
       "username": "test",
       "firstName": "Testing",
-      "lastName": "Testov212",
+      "lastName": "Testov",
       "email": "test@test",
       "address": {
         "street": "test street",
