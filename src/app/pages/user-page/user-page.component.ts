@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from 'src/app/interfaces/user/user';
-import { ActivatedRoute, Params } from '@angular/router';
-import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
+import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
+
+import { User } from 'src/app/interfaces/user/user';
 
 @Component({
   selector: 'user-page',
@@ -31,34 +32,41 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   private getUsers(): void {
     this.getUsersSub = this.usersStoreSerivce.getUsers().subscribe({
-      next: (users: User[] | null): void => {
-        !users && this.usersStoreSerivce.loadUsers();
-      },
+      next: this.processUsersFromStore.bind(this),
     });
+  }
+
+  private processUsersFromStore(users: User[] | null): void {
+    !users && this.usersStoreSerivce.loadUsers();
   }
 
   private handleRouteParams(): void {
     this.handleRouteParamsSub = this.activatedRoute.params.subscribe({
-      next: (params: Params): void => {
-        this.initUserById(+params.id);
-      },
+      next: this.processRouteParams.bind(this),
     });
+  }
+
+  private processRouteParams(params: Params): void {
+    this.initUserById(+params.id);
   }
 
   private initUserById(id: number): void {
     this.getUserByIdSub = this.usersStoreSerivce.getUserById(id).subscribe({
-      next: (user: User | null): void => {
-        if (user) {
-          this.user = { ...user };
-          this.setPageTitle();
-          this.usersStoreSerivce.setCurrentUser(user);
-        }
-      },
+      next: this.processUserFromStore.bind(this),
     });
   }
 
+  private processUserFromStore(user: User | null): void {
+    if (user) {
+      this.user = { ...user };
+      this.setPageTitle();
+      this.usersStoreSerivce.setCurrentUser(user);
+    }
+  }
+
   private setPageTitle(): void {
-    this.pageTitle = `${this.user.username} - [uid: ${this.user.id}]`;
+    this.user &&
+      (this.pageTitle = `${this.user.username} - [uid: ${this.user.id}]`);
   }
 
   public goToUsersPage(): void {
