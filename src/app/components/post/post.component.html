@@ -31,6 +31,8 @@
     (onEditingCancelled)="handleEditingCancelation()"
   ></edit-post>
 
+  <loader *ngIf="!comments">Loading comments...</loader>
+
   <div class="post__comments" *ngIf="comments && comments.length > 0">
     <div class="post__comments-actions" *ngIf="!isEditing">
       <button
