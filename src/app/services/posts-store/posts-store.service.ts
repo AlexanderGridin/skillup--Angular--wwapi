@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Post } from 'src/app/interfaces/post';
+
+import { Store } from '@ngrx/store';
 import { PostsActions } from 'src/app/store/posts/posts.actions';
 import { PostsSelectors } from 'src/app/store/posts/posts.selectors';
 import { PostDTO } from 'src/app/interfaces/post-dto';
+
+import { Post } from 'src/app/interfaces/post';
 
 @Injectable()
 export class PostsStoreService {
