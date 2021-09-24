@@ -36,6 +36,7 @@ export class PostFormComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(this.titleFormControlInitalValue, [
         Validators.required,
+        Validators.maxLength(35),
       ]),
       body: new FormControl(this.bodyFormControlInitalValue, [
         Validators.required,
