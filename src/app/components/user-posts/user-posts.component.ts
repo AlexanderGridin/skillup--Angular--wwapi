@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
+
+import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
+
 import { Post } from 'src/app/interfaces/post';
 import { User } from 'src/app/interfaces/user/user';
-import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
 
 @Component({
   selector: 'user-posts',

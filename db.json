@@ -333,10 +333,9 @@
   ],
   "users": [
     {
-      "id": 1,
+      "username": "Bret",
       "firstName": "Leanne",
       "lastName": "Graham",
-      "username": "Bret",
       "email": "Sincere@april.biz",
       "address": {
         "street": "Kulas Light",
@@ -349,7 +348,8 @@
       "company": {
         "name": "Romaguera-Crona",
         "scope": "Finance"
-      }
+      },
+      "id": 1
     },
     {
       "username": "ivanova2213",
