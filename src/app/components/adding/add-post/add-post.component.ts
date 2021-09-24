@@ -1,9 +1,11 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
+
 import { PostFormData } from 'src/app/interfaces/form-data/post-form-data';
 import { User } from 'src/app/interfaces/user/user';
 import { PostDTO } from 'src/app/interfaces/post-dto';
-import { PostsStoreService } from 'src/app/services/posts-store/posts-store.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'add-post',
