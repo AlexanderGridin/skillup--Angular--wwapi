@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { User } from 'src/app/interfaces/user/user';
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 import { Post } from 'src/app/interfaces/post';
@@ -29,6 +30,10 @@ export class LocalApiService {
     return this.http.get<Post[]>(`${this.baseUrl}/api/posts`);
   }
 
+  public addPost(post: PostDTO): Observable<Post> {
+    return this.http.post<Post>(`${this.baseUrl}/api/posts`, post);
+  }
+
   public removePostById(postId: number): Observable<Object> {
     return this.http.delete(`${this.baseUrl}/api/posts/${postId}`);
   }
@@ -39,9 +44,5 @@ export class LocalApiService {
 
   public getComments(): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.baseUrl}/api/comments`);
-  }
-
-  public addPost(post: PostDTO): Observable<Post> {
-    return this.http.post<Post>(`${this.baseUrl}/api/posts`, post);
   }
 }
