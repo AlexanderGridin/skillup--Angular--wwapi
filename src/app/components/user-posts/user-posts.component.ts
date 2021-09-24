@@ -11,6 +11,7 @@ import { PostsStoreService } from 'src/app/services/posts-store/posts-store.serv
 })
 export class UserPostsComponent implements OnInit, OnDestroy {
   @Input() public user!: User;
+
   public posts!: Post[];
 
   private getPostsSub!: Subscription;
@@ -22,17 +23,17 @@ export class UserPostsComponent implements OnInit, OnDestroy {
     this.getPosts();
   }
 
-  public getPosts(): void {
+  private getPosts(): void {
     this.getPostsSub = this.postsStoreService.getPosts().subscribe({
       next: this.processReceivedPostsFromStore.bind(this),
     });
   }
 
-  public processReceivedPostsFromStore(posts: Post[] | null): void {
+  private processReceivedPostsFromStore(posts: Post[] | null): void {
     posts ? this.getPostsOfUser() : this.postsStoreService.loadPosts();
   }
 
-  public getPostsOfUser(): void {
+  private getPostsOfUser(): void {
     if (this.user) {
       this.getPostsOfUserSub = this.postsStoreService
         .getPostsByUserId(this.user.id)
@@ -42,7 +43,7 @@ export class UserPostsComponent implements OnInit, OnDestroy {
     }
   }
 
-  public processReceivedPostsOfUserFromStore(posts: Post[] | null): void {
+  private processReceivedPostsOfUserFromStore(posts: Post[] | null): void {
     posts ? (this.posts = posts) : (this.posts = []);
   }
 

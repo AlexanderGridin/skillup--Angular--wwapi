@@ -1,9 +1,7 @@
 <div class="post">
-  <div class="post__id">{{ post.id }}</div>
+  <div class="post__id">id: {{ post.id }}</div>
   <div class="post__content" *ngIf="!isEditing">
-    <h3 class="post__title">
-      {{ post.title }}
-    </h3>
+    <h3 class="post__title">{{ post.title }} - [uid: {{ post.userId }}]</h3>
     <div class="post__body">
       {{ post.body }}
     </div>

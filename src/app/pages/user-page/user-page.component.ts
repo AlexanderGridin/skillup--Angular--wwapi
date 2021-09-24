@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 export class UserPageComponent implements OnInit, OnDestroy {
   public user!: User;
 
+  public pageTitle!: string;
+
   private getUsersSub!: Subscription;
   private handleRouteParamsSub!: Subscription;
   private getUserByIdSub!: Subscription;
@@ -49,10 +51,15 @@ export class UserPageComponent implements OnInit, OnDestroy {
       next: (user: User | null): void => {
         if (user) {
           this.user = { ...user };
+          this.setPageTitle();
           this.usersStoreSerivce.setCurrentUser(user);
         }
       },
     });
+  }
+
+  private setPageTitle(): void {
+    this.pageTitle = `${this.user.username} - [uid: ${this.user.id}]`;
   }
 
   public goToUsersPage(): void {
