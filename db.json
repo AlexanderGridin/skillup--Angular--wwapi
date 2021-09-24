@@ -376,16 +376,16 @@
       "lastName": "testtt",
       "email": "test@test",
       "address": {
-        "street": "asdfasdf",
-        "building": "asdfasdf",
-        "city": "asdfasdf",
-        "zipcode": "asdfasdf"
+        "street": "test street",
+        "building": "test building",
+        "city": "test city",
+        "zipcode": "test zipcode"
       },
       "phone": "+383242342342",
-      "website": "fasdfasdf",
+      "website": "test.com",
       "company": {
-        "name": "asdfasdf",
-        "scope": "asdfasdf"
+        "name": "Test CORP",
+        "scope": "Testing of tests"
       },
       "id": 3
     }

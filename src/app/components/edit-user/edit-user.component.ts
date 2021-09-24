@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 import { User } from 'src/app/interfaces/user/user';
+
 import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
 @Component({
@@ -17,29 +19,31 @@ export class EditUserComponent implements OnInit, OnDestroy {
   public modalMinWidth: number = 250;
   public modalWidth: number = 991;
 
-  private getUsersSub!: Subscription;
+  private usersUpdatesSub!: Subscription;
 
   constructor(private usersStoreSerive: UsersStoreService) {}
 
   public ngOnInit(): void {
-    this.getUsers();
+    this.subscribeForUsersUpdates();
   }
 
-  public getUsers(): void {
-    this.getUsersSub = this.usersStoreSerive.getUsers().subscribe({
+  private subscribeForUsersUpdates(): void {
+    this.usersUpdatesSub = this.usersStoreSerive.getUsers().subscribe({
       next: this.closeModal.bind(this),
     });
   }
 
-  public handleFormSubmit(userFormData: AddUserFormData | null): void {
-    if (userFormData) {
-      let updatedUser: User = {
-        ...userFormData,
-        id: this.user.id,
-      };
+  public handleFormSubmit(userFormData: AddUserFormData): void {
+    this.usersStoreSerive.updateUser(
+      this.createUserFromUserFormData(userFormData)
+    );
+  }
 
-      this.usersStoreSerive.updateUser(updatedUser);
-    }
+  private createUserFromUserFormData(userFormData: AddUserFormData): User {
+    return {
+      ...userFormData,
+      id: this.user.id,
+    };
   }
 
   public showModal(): void {
@@ -51,6 +55,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.getUsersSub.unsubscribe();
+    this.usersUpdatesSub.unsubscribe();
   }
 }
