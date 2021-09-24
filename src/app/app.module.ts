@@ -2,38 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
-
-import { LocalApiService } from './services/local-api/local-api.service';
-import { UsersStoreService } from './services/users-store/users-store.service';
-import { PostsStoreService } from './services/posts-store/posts-store.service';
-
-import { UsersTableComponent } from './components/users-table/users-table.component';
-import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { UserMapper } from './mappers/UserMapper';
+import { StoreModule } from '@ngrx/store';
+import { STORE } from './store/store';
+
+import { EffectsModule } from '@ngrx/effects';
+import { EFFECTS } from './store/effects';
+
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './routing/routes';
+
+import { AppComponent } from './app.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { PageComponent } from './components/page/page.component';
 import { ContainerComponent } from './components/container/container.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
-import { InputsModule } from '@progress/kendo-angular-inputs';
-import { LabelModule } from '@progress/kendo-angular-label';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { AddUserComponent } from './components/add-user/add-user.component';
-import { DialogsModule } from '@progress/kendo-angular-dialog';
-
-import { STORE } from './store/store';
-import { EFFECTS } from './store/effects';
-
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-
-import { ROUTES } from './routing/routes';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { PostComponent } from './components/post/post.component';
 import { UserPostsComponent } from './components/user-posts/user-posts.component';
@@ -41,12 +27,27 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
 import { PageSectionComponent } from './components/page-section/page-section.component';
 import { MessageComponent } from './components/message/message.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
-import { CommentsStoreService } from './services/comments-store/comments-store.service';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentsListComponent } from './components/comments-list/comments-list.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+
+import { GridModule } from '@progress/kendo-angular-grid';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { LabelModule } from '@progress/kendo-angular-label';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+
+import { LocalApiService } from './services/local-api/local-api.service';
+import { UsersStoreService } from './services/users-store/users-store.service';
+import { PostsStoreService } from './services/posts-store/posts-store.service';
+import { CommentsStoreService } from './services/comments-store/comments-store.service';
+
+import { UserMapper } from './mappers/UserMapper';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -73,9 +74,10 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    GridModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+
+    GridModule,
     InputsModule,
     LabelModule,
     ButtonsModule,
@@ -83,7 +85,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 
     StoreModule.forRoot(STORE),
     EffectsModule.forRoot(EFFECTS),
-
     RouterModule.forRoot(ROUTES),
 
     // Redux dev-tools
@@ -95,10 +96,11 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
   ],
   providers: [
     LocalApiService,
-    UserMapper,
     UsersStoreService,
     PostsStoreService,
     CommentsStoreService,
+
+    UserMapper,
   ],
   bootstrap: [AppComponent],
 })
