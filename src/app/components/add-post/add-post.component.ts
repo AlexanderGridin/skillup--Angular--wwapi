@@ -33,12 +33,16 @@ export class AddPostComponent implements OnInit, OnDestroy {
   }
 
   public handleFormSubmit(postFormData: PostFormData): void {
-    let postDTO: PostDTO = {
+    this.postsStoreService.addPost(
+      this.createPostDTOFromPostFormData(postFormData)
+    );
+  }
+
+  private createPostDTOFromPostFormData(postFormData: PostFormData): PostDTO {
+    return {
       ...postFormData,
       userId: this.user.id,
     };
-
-    this.postsStoreService.addPost(postDTO);
   }
 
   public showModal(): void {

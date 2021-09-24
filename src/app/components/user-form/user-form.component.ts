@@ -34,11 +34,11 @@ export class UserFormComponent implements OnInit {
     new EventEmitter<User | null>();
 
   public ngOnInit(): void {
-    this.setFormControlsInitialValues();
+    this.initFormControlsInitialValues();
     this.initForm();
   }
 
-  public setFormControlsInitialValues(): void {
+  public initFormControlsInitialValues(): void {
     this.usernameFormControlInitialValue = this.user ? this.user.username : '';
     this.firstNameFormControlInitialvalue = this.user
       ? this.user.firstName

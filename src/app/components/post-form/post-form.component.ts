@@ -24,10 +24,13 @@ export class PostFormComponent implements OnInit {
   constructor() {}
 
   public ngOnInit(): void {
+    this.initFormControlsInitialValues();
+    this.initForm();
+  }
+
+  private initFormControlsInitialValues(): void {
     this.titleFormControlInitalValue = this.post ? this.post.title : '';
     this.bodyFormControlInitalValue = this.post ? this.post.body : '';
-
-    this.initForm();
   }
 
   public initForm(): void {
@@ -42,6 +45,33 @@ export class PostFormComponent implements OnInit {
   }
 
   public handleFormSubmit(): void {
+    this.form.invalid
+      ? this.handleFormInvalidStatus()
+      : this.handleFormValidStatus();
+  }
+
+  private handleFormInvalidStatus(): void {
+    this.markAllInvalidControlsAsTouchedOf(this.form);
+  }
+
+  private markAllInvalidControlsAsTouchedOf(formGroup: FormGroup): void {
+    if (!formGroup.controls) {
+      return;
+    }
+
+    for (let controlKey in formGroup.controls) {
+      let control: FormGroup = formGroup.controls[controlKey] as FormGroup;
+
+      if (control.controls) {
+        this.markAllInvalidControlsAsTouchedOf(control);
+      }
+
+      formGroup.controls[controlKey].invalid &&
+        formGroup.controls[controlKey].markAsTouched();
+    }
+  }
+
+  private handleFormValidStatus(): void {
     if (this.post) {
       let updatedPost: Post = {
         ...this.form.value,

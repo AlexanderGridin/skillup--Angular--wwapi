@@ -12,7 +12,7 @@
   </div>
 
   <kendo-dialog
-    class="add-user__dialog"
+    class="add-post__dialog"
     *ngIf="isModalVisible"
     [title]="modalTitle"
     [minWidth]="modalMinWidth"
@@ -20,7 +20,7 @@
     (close)="closeModal()"
   >
     <post-form
-      class="add-user__form"
+      class="add-post__form"
       [submitButtonText]="'Add post'"
       (onSubmit)="handleFormSubmit($event)"
       (onCancel)="closeModal()"
