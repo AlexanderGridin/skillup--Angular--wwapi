@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from 'src/app/interfaces/user/user';
-import { AddUserFormData } from 'src/app/interfaces/add-user-form-data';
+import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 
 export namespace UsersActions {
   export const addUser = createAction(
@@ -16,5 +16,20 @@ export namespace UsersActions {
   export const loadUsersSuccess = createAction(
     'LOAD_USERS_SUCCESS',
     props<{ users: User[] }>()
+  );
+
+  export const setCurrentUser = createAction(
+    'SET_CURRENT_USER',
+    props<{ user: User }>()
+  );
+  export const unsetCurrentUser = createAction('UNSET_CURRENT_USER');
+
+  export const updateUser = createAction(
+    'UPDATE_USER',
+    props<{ user: User }>()
+  );
+  export const updateUserSuccess = createAction(
+    'UPDATE_USER_SUCCESS',
+    props<{ user: User }>()
   );
 }

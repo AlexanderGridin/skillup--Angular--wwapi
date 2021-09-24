@@ -1,0 +1,49 @@
+<div class="post">
+  <div class="post__id">id: {{ post.id }}</div>
+
+  <div class="post__content" *ngIf="!isEditing">
+    <h3 class="post__title">{{ post.title }} - [uid: {{ post.userId }}]</h3>
+
+    <div class="post__body">
+      {{ post.body }}
+    </div>
+
+    <div class="post__actions">
+      <button
+        class="post__button"
+        kendoButton
+        [primary]="true"
+        (click)="editPost()"
+      >
+        Edit
+      </button>
+      <button class="post__button" kendoButton (click)="removePost()">
+        Remove
+      </button>
+    </div>
+  </div>
+
+  <edit-post
+    [post]="post"
+    *ngIf="isEditing"
+    (onEditingCancelled)="handleEditingCancelation()"
+  ></edit-post>
+
+  <div class="post__comments" *ngIf="comments && comments.length > 0">
+    <div class="post__comments-actions" *ngIf="!isEditing">
+      <button
+        class="post__button"
+        type="button"
+        kendoButton
+        (click)="toggleCommentsVisibility()"
+      >
+        {{ commentsVisibilityTogglerText }}
+      </button>
+    </div>
+
+    <comments-list
+      [comments]="comments"
+      *ngIf="isCommentsVisible"
+    ></comments-list>
+  </div>
+</div>

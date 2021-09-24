@@ -1,0 +1,23 @@
+.user-info {
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  margin: auto;
+  max-width: 450px;
+  padding: 15px;
+  width: 100%;
+}
+
+.user-info__field + .user-info__field {
+  margin-top: 10px;
+}
+
+.user-info__field {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.user-info__field:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}

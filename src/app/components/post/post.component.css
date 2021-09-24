@@ -1,0 +1,40 @@
+.post {
+  border: 1px solid #ddd;
+  padding: 10px;
+  position: relative;
+}
+
+.post__id {
+  align-items: center;
+  background: green;
+  color: white;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 75px;
+}
+
+.post__title {
+  margin-bottom: 15px;
+}
+
+.post__actions {
+  margin: -5px;
+  padding-top: 15px;
+}
+
+.post__button {
+  margin: 5px;
+}
+
+.post__comments-actions {
+  margin: 0 -5px;
+  padding: 15px 0 7px;
+}
+
+.post__comments-actions .post__button {
+  margin: 5px;
+}
