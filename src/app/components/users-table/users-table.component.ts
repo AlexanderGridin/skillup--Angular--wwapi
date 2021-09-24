@@ -6,8 +6,9 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UserMapper } from 'src/app/mappers/UserMapper';
 import { Router } from '@angular/router';
+
+import { UserMapper } from 'src/app/mappers/UserMapper';
 
 import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
@@ -21,10 +22,9 @@ import { UserOfUsersTable } from 'src/app/interfaces/user/user-of-users-table';
 })
 export class UsersTableComponent implements OnInit, OnDestroy {
   public usersForRender!: UserOfUsersTable[];
+  private selectedUser!: UserOfUsersTable;
 
   private getUsersSub!: Subscription;
-
-  private selectedUser!: UserOfUsersTable;
 
   @Output() private onSelectUserByDblclick: EventEmitter<number> =
     new EventEmitter<number>();
@@ -41,7 +41,6 @@ export class UsersTableComponent implements OnInit, OnDestroy {
 
   private getUsers(): void {
     this.getUsersSub = this.usersStoreService.getUsers().subscribe({
-      // next: this.handleUsersFromStore.bind(this),
       next: (users: User[] | null): void => {
         users
           ? this.setUsersForRender(users)
@@ -50,13 +49,7 @@ export class UsersTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  private handleUsersFromStore(users: User[]): void {
-    users.length === 0
-      ? this.usersStoreService.loadUsers()
-      : this.setUsersForRender(users);
-  }
-
-  public setUsersForRender(users: User[]): void {
+  private setUsersForRender(users: User[]): void {
     this.usersForRender = users.map((user: User) =>
       this.userMapper.prepareForRenderInUsersTable(user)
     );
