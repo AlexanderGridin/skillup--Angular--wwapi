@@ -18,16 +18,16 @@ export class AddPostComponent implements OnInit, OnDestroy {
   public modalMinWidth: number = 250;
   public modalWidth: number = 450;
 
-  private getPostsSub!: Subscription;
+  private postsUpdatesSub!: Subscription;
 
   constructor(private postsStoreService: PostsStoreService) {}
 
   public ngOnInit(): void {
-    this.getPosts();
+    this.subscribeForPostsUpdates();
   }
 
-  private getPosts(): void {
-    this.getPostsSub = this.postsStoreService.getPosts().subscribe({
+  private subscribeForPostsUpdates(): void {
+    this.postsUpdatesSub = this.postsStoreService.getPosts().subscribe({
       next: this.closeModal.bind(this),
     });
   }
@@ -54,6 +54,6 @@ export class AddPostComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.getPostsSub.unsubscribe();
+    this.postsUpdatesSub.unsubscribe();
   }
 }
