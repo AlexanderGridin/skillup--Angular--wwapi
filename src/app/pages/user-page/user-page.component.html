@@ -1,0 +1,19 @@
+<page [title]="pageTitle" *ngIf="user">
+  <user-info [user]="user"></user-info>
+
+  <div class="user-page__actions">
+    <div class="user-page__actions-item">
+      <button kendoButton [primary]="true" (click)="goToUsersPage()">
+        All users
+      </button>
+    </div>
+    <div class="user-page__actions-item">
+      <add-post [user]="user"></add-post>
+    </div>
+    <div class="user-page__actions-item">
+      <edit-user [user]="user"></edit-user>
+    </div>
+  </div>
+
+  <user-posts [user]="user"></user-posts>
+</page>

@@ -29,6 +29,17 @@ export class UsersEffects {
     )
   );
 
+  public updateUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UsersActions.updateUser),
+      mergeMap((action) =>
+        this.localApiService
+          .updateUser(action.user)
+          .pipe(map((user: User) => UsersActions.updateUserSuccess({ user })))
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private localApiService: LocalApiService

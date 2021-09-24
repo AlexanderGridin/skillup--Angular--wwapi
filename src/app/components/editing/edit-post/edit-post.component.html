@@ -1,0 +1,9 @@
+<div class="edit-post" *ngIf="post">
+  <post-form
+    class="edit-post__form"
+    [post]="post"
+    [submitButtonText]="'Save changes'"
+    (onSubmit)="handlePostFormSubmit($event)"
+    (onCancel)="handlePostFormCancel()"
+  ></post-form>
+</div>

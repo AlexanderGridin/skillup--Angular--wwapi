@@ -1,10 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { UsersActions } from './users.actions';
-import { UsersStore } from 'src/app/interfaces/users-store';
+import { UsersStore } from 'src/app/interfaces/store/users-store';
 import { User } from 'src/app/interfaces/user/user';
 
 const initalStore: UsersStore = {
-  users: [],
+  users: null,
+  currentUser: null,
 };
 
 const _usersReducer = createReducer(
@@ -12,6 +13,12 @@ const _usersReducer = createReducer(
   on(
     UsersActions.addUserSuccess,
     (store: UsersStore, { user }: { user: User }): UsersStore => {
+      if (!store.users) {
+        return {
+          ...store,
+        };
+      }
+
       const usersFromStore: User[] = [...store.users];
       const users: User[] = [...usersFromStore, user];
 
@@ -25,6 +32,45 @@ const _usersReducer = createReducer(
   on(
     UsersActions.loadUsersSuccess,
     (store: UsersStore, { users }: { users: User[] }): UsersStore => {
+      return {
+        ...store,
+        users,
+      };
+    }
+  ),
+
+  on(
+    UsersActions.setCurrentUser,
+    (store: UsersStore, { user }: { user: User }): UsersStore => {
+      return {
+        ...store,
+        currentUser: user,
+      };
+    }
+  ),
+
+  on(UsersActions.unsetCurrentUser, (store: UsersStore): UsersStore => {
+    return {
+      ...store,
+      currentUser: null,
+    };
+  }),
+
+  on(
+    UsersActions.updateUserSuccess,
+    (store: UsersStore, { user }: { user: User }): UsersStore => {
+      if (!store.users) {
+        return {
+          ...store,
+        };
+      }
+
+      let usersFromStore: User[] = [...store.users];
+      let users = usersFromStore.map(
+        (userFromStore: User): User =>
+          userFromStore.id === user.id ? user : userFromStore
+      );
+
       return {
         ...store,
         users,

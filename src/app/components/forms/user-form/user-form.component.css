@@ -1,0 +1,53 @@
+.user-form__item {
+  display: block;
+}
+
+.user-form__item + .user-form__item {
+  margin-top: 15px;
+}
+
+.user-form__field-group {
+  align-items: flex-start;
+  border: 1px solid #ddd;
+  display: flex;
+  padding: 15px 10px;
+}
+
+.user-form__field-group .user-form__item + .user-form__item {
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.user-form__address .user-form__item {
+  width: 25%;
+}
+
+.user-form__company .user-form__item {
+  width: 50%;
+}
+
+.user-form__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-form__required {
+  color: #ff6358;
+}
+
+.user-form__control {
+  width: 100%;
+}
+
+.user-form__actions {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  margin: -5px;
+  padding-top: 15px;
+}
+
+.user-form__button {
+  margin: 5px;
+}

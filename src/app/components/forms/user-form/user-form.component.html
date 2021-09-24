@@ -1,0 +1,208 @@
+<form class="user-form" [formGroup]="form" (ngSubmit)="handleFormSubmit()">
+  <kendo-formfield class="user-form__user-name user-form__item">
+    <kendo-label class="user-form__label" [for]="userName" text="User name">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="user-form__control user-form__control--user-name"
+      formControlName="username"
+      placeholder="Enter Name"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #userName
+    ></kendo-textbox>
+  </kendo-formfield>
+
+  <kendo-formfield class="user-form__first-name user-form__item">
+    <kendo-label class="user-form__label" [for]="firstName" text="First name">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="user-form__control user-form__control--first-name"
+      formControlName="firstName"
+      placeholder="First Name"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #firstName
+    ></kendo-textbox>
+  </kendo-formfield>
+
+  <kendo-formfield class="user-form__last-name user-form__item">
+    <kendo-label class="user-form__label" [for]="lastName" text="Last name">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="user-form__control user-form__control--last-name"
+      formControlName="lastName"
+      placeholder="Last Name"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #lastName
+    ></kendo-textbox>
+  </kendo-formfield>
+
+  <kendo-formfield class="user-form__email user-form__item">
+    <kendo-label class="user-form__label" [for]="email" text="Email">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="user-form__control user-form__control--email"
+      formControlName="email"
+      placeholder="Email"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #email
+    ></kendo-textbox>
+  </kendo-formfield>
+
+  <div
+    class="user-form__address user-form__field-group user-form__item"
+    formGroupName="address"
+  >
+    <kendo-formfield class="user-form__street user-form__item">
+      <kendo-label class="user-form__label" [for]="street" text="Street">
+        <span class="user-form__required">&nbsp;*</span>
+      </kendo-label>
+
+      <kendo-textbox
+        class="user-form__control user-form__control--street"
+        formControlName="street"
+        placeholder="Street"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+        #street
+      ></kendo-textbox>
+    </kendo-formfield>
+
+    <kendo-formfield class="user-form__building user-form__item">
+      <kendo-label class="user-form__label" [for]="building" text="Building">
+        <span class="user-form__required">&nbsp;*</span>
+      </kendo-label>
+
+      <kendo-textbox
+        class="user-form__control user-form__control--building"
+        formControlName="building"
+        placeholder="Building"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+        #building
+      ></kendo-textbox>
+    </kendo-formfield>
+
+    <kendo-formfield class="user-form__city user-form__item">
+      <kendo-label class="user-form__label" [for]="city" text="City">
+        <span class="user-form__required">&nbsp;*</span>
+      </kendo-label>
+
+      <kendo-textbox
+        class="user-form__control user-form__control--city"
+        formControlName="city"
+        placeholder="City"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+        #city
+      ></kendo-textbox>
+    </kendo-formfield>
+
+    <kendo-formfield class="user-form__zipcode user-form__item">
+      <kendo-label class="user-form__label" [for]="zipcode" text="Zipcode">
+        <span class="user-form__required">&nbsp;*</span>
+      </kendo-label>
+
+      <kendo-textbox
+        class="user-form__control user-form__control--zipcode"
+        formControlName="zipcode"
+        placeholder="Zipcode"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+        #zipcode
+      ></kendo-textbox>
+    </kendo-formfield>
+  </div>
+
+  <kendo-formfield class="user-form__phone user-form__item">
+    <kendo-label class="user-form__label" [for]="phone" text="Phone">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-maskedtextbox
+      class="user-form__control user-form__control--phone"
+      formControlName="phone"
+      [mask]="phoneFormControlMask"
+      #phone
+    ></kendo-maskedtextbox>
+  </kendo-formfield>
+
+  <kendo-formfield class="user-form__website user-form__item">
+    <kendo-label class="user-form__label" [for]="website" text="Website">
+      <span class="user-form__required">&nbsp;*</span>
+    </kendo-label>
+
+    <kendo-textbox
+      class="user-form__control user-form__control--website"
+      formControlName="website"
+      placeholder="Website"
+      showSuccessIcon="initial"
+      showErrorIcon="initial"
+      #website
+    ></kendo-textbox>
+  </kendo-formfield>
+
+  <div
+    class="user-form__company user-form__field-group user-form__item"
+    formGroupName="company"
+  >
+    <kendo-formfield class="user-form__company-name user-form__item">
+      <kendo-label class="user-form__label" [for]="name" text="Company name">
+        <span class="user-form__required">&nbsp;*</span>
+      </kendo-label>
+
+      <kendo-textbox
+        class="user-form__control user-form__control--company-name"
+        formControlName="name"
+        placeholder="Company name"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+        #name
+      ></kendo-textbox>
+    </kendo-formfield>
+
+    <kendo-formfield class="user-form__company-scope user-form__item">
+      <kendo-label class="user-form__label" [for]="scope" text="Company scope">
+        <span class="user-form__required">&nbsp;*</span>
+      </kendo-label>
+
+      <kendo-textbox
+        class="user-form__control user-form__control--company-scope"
+        formControlName="scope"
+        placeholder="Company scope"
+        showSuccessIcon="initial"
+        showErrorIcon="initial"
+        #scope
+      ></kendo-textbox>
+    </kendo-formfield>
+  </div>
+
+  <div class="user-form__actions">
+    <button
+      class="user-form__button"
+      kendoButton
+      type="submit"
+      [primary]="true"
+    >
+      {{ submitButtonText }}
+    </button>
+    <button
+      class="user-form__button"
+      kendoButton
+      type="button"
+      (click)="handleCancel()"
+    >
+      {{ cancelButtonText }}
+    </button>
+  </div>
+</form>
