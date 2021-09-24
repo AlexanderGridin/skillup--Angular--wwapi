@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 })
 export class UserPageComponent implements OnInit, OnDestroy {
   public user!: User;
-
   public pageTitle!: string;
 
   private getUsersSub!: Subscription;

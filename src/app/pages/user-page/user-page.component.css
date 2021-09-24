@@ -1,8 +1,8 @@
 .user-page__actions {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .user-page__actions-item {
