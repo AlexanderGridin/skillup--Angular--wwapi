@@ -49,6 +49,9 @@ import { UserMapper } from './mappers/UserMapper';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EditPostComponent } from './components/editing/edit-post/edit-post.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+
 
 @NgModule({
   declarations: [
@@ -72,6 +75,7 @@ import { EditPostComponent } from './components/editing/edit-post/edit-post.comp
     UserInfoComponent,
     EditUserComponent,
     EditPostComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +99,8 @@ import { EditPostComponent } from './components/editing/edit-post/edit-post.comp
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
+
+    IndicatorsModule,
   ],
   providers: [
     LocalApiService,

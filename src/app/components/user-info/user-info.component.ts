@@ -5,6 +5,8 @@ import { UserOfUserInfo } from 'src/app/interfaces/user/user-of-user-info';
 
 import { UserMapper } from 'src/app/mappers/UserMapper';
 
+import { EMPTY_USER } from 'src/app/constants/empty-user';
+
 @Component({
   selector: 'user-info',
   templateUrl: './user-info.component.html',
@@ -22,6 +24,10 @@ export class UserInfoComponent implements OnChanges {
   }
 
   private setUserForRender(): void {
-    this.userForRender = this.userMapper.prepareForRenderInUserInfo(this.user);
+    if (this.user.id !== EMPTY_USER.id) {
+      this.userForRender = this.userMapper.prepareForRenderInUserInfo(
+        this.user
+      );
+    }
   }
 }

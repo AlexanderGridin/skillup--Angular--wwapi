@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { UsersActions } from './users.actions';
 import { UsersStore } from 'src/app/interfaces/store/users-store';
 import { User } from 'src/app/interfaces/user/user';
+import { EmptyUser } from 'src/app/interfaces/user/empty-user';
 
 const initalStore: UsersStore = {
   users: null,
@@ -41,7 +42,7 @@ const _usersReducer = createReducer(
 
   on(
     UsersActions.setCurrentUser,
-    (store: UsersStore, { user }: { user: User }): UsersStore => {
+    (store: UsersStore, { user }: { user: User | EmptyUser }): UsersStore => {
       return {
         ...store,
         currentUser: user,

@@ -1,0 +1,7 @@
+.users-table {
+  position: relative;
+}
+
+.users-table--loading-users {
+  height: 350px;
+}

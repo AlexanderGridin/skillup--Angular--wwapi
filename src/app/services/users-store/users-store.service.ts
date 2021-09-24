@@ -7,6 +7,7 @@ import { UsersSelectors } from 'src/app/store/users/users.selectors';
 
 import { User } from 'src/app/interfaces/user/user';
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
+import { EmptyUser } from 'src/app/interfaces/user/empty-user';
 
 @Injectable()
 export class UsersStoreService {
@@ -32,7 +33,7 @@ export class UsersStoreService {
     return this.store$.select(UsersSelectors.getUserById(id));
   }
 
-  public setCurrentUser(user: User): void {
+  public setCurrentUser(user: User | EmptyUser): void {
     this.store$.dispatch(UsersActions.setCurrentUser({ user }));
   }
 

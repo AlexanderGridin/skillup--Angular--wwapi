@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { EMPTY_USER } from 'src/app/constants/empty-user';
 
 import { UsersStoreService } from 'src/app/services/users-store/users-store.service';
 
@@ -13,7 +14,9 @@ import { User } from 'src/app/interfaces/user/user';
 })
 export class UserPageComponent implements OnInit, OnDestroy {
   public user!: User;
-  public pageTitle!: string;
+
+  public pageTitle: string = 'Loading user...';
+  public isUserEmpty: boolean = false;
 
   private getUsersSub!: Subscription;
   private handleRouteParamsSub!: Subscription;
@@ -57,16 +60,16 @@ export class UserPageComponent implements OnInit, OnDestroy {
   }
 
   private processUserFromStore(user: User | null): void {
-    if (user) {
+    if (user && user.id !== EMPTY_USER.id) {
+      this.pageTitle = `${user.username} - [uid: ${user.id}]`;
       this.user = { ...user };
-      this.setPageTitle();
       this.usersStoreSerivce.setCurrentUser(user);
     }
-  }
 
-  private setPageTitle(): void {
-    this.user &&
-      (this.pageTitle = `${this.user.username} - [uid: ${this.user.id}]`);
+    if (user && user.id === EMPTY_USER.id) {
+      this.pageTitle = 'User not found...';
+      this.isUserEmpty = true;
+    }
   }
 
   public goToUsersPage(): void {

@@ -1,4 +1,19 @@
-<page [title]="pageTitle" *ngIf="user">
+<page [title]="pageTitle" *ngIf="!user && !isUserEmpty">
+  <loader>Loading user...</loader>
+</page>
+
+<page [title]="pageTitle" *ngIf="isUserEmpty">
+  <message>This user don't exist...</message>
+  <div class="user-page__actions">
+    <div class="user-page__actions-item">
+      <button kendoButton [primary]="true" (click)="goToUsersPage()">
+        All users
+      </button>
+    </div>
+  </div>
+</page>
+
+<page [title]="pageTitle" *ngIf="user && !isUserEmpty">
   <user-info [user]="user"></user-info>
 
   <div class="user-page__actions">

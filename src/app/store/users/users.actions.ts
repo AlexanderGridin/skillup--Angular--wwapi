@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from 'src/app/interfaces/user/user';
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
+import { EmptyUser } from 'src/app/interfaces/user/empty-user';
 
 export namespace UsersActions {
   export const addUser = createAction(
@@ -20,7 +21,7 @@ export namespace UsersActions {
 
   export const setCurrentUser = createAction(
     'SET_CURRENT_USER',
-    props<{ user: User }>()
+    props<{ user: User | EmptyUser }>()
   );
   export const unsetCurrentUser = createAction('UNSET_CURRENT_USER');
 
