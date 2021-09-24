@@ -72,14 +72,12 @@ export class UserFormComponent implements OnInit {
 
       firstName: new FormControl(this.firstNameFormControlInitialvalue, [
         Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(15),
+        Validators.minLength(3),
       ]),
 
       lastName: new FormControl(this.lastNameFormControlInitialValue, [
         Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(15),
+        Validators.minLength(3),
       ]),
 
       email: new FormControl(this.emailFormControlInitialValue, [
@@ -90,7 +88,7 @@ export class UserFormComponent implements OnInit {
       address: new FormGroup({
         street: new FormControl(this.streetFromControlInitialValue, [
           Validators.required,
-          Validators.minLength(5),
+          Validators.minLength(3),
         ]),
 
         building: new FormControl(this.buildingFormControlInitialValue, [
