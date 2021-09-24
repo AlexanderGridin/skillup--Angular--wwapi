@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/interfaces/user/user';
+
+import { Store } from '@ngrx/store';
 import { UsersActions } from 'src/app/store/users/users.actions';
 import { UsersSelectors } from 'src/app/store/users/users.selectors';
+
+import { User } from 'src/app/interfaces/user/user';
 import { AddUserFormData } from 'src/app/interfaces/form-data/add-user-form-data';
 
 @Injectable()
