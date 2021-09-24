@@ -14,8 +14,8 @@ import { User } from 'src/app/interfaces/user/user';
 })
 export class UserPageComponent implements OnInit, OnDestroy {
   public user!: User;
-  public pageTitle: string = 'Loading user...';
 
+  public pageTitle: string = 'Loading user...';
   public isUserEmpty: boolean = false;
 
   private getUsersSub!: Subscription;
