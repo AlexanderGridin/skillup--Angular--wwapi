@@ -1,11 +1,11 @@
 .user-info {
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  margin: auto;
   max-width: 450px;
   padding: 15px;
-  margin: auto;
   width: 100%;
-  border: 1px solid #ddd;
-  margin-bottom: 35px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .user-info__field + .user-info__field {

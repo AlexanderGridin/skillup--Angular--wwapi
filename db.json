@@ -372,8 +372,8 @@
     },
     {
       "username": "test",
-      "firstName": "testtt",
-      "lastName": "testtt",
+      "firstName": "Testing",
+      "lastName": "Testov",
       "email": "test@test",
       "address": {
         "street": "test street",

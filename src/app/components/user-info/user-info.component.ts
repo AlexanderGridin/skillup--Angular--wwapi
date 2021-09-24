@@ -10,15 +10,20 @@ import { UserMapper } from 'src/app/mappers/UserMapper';
 })
 export class UserInfoComponent implements OnInit, OnChanges {
   @Input() public user!: User;
+
   public userForRender!: UserOfUserInfo;
 
   constructor(private userMapper: UserMapper) {}
 
   public ngOnInit(): void {
-    this.userForRender = this.userMapper.prepareForRenderInUserInfo(this.user);
+    this.setUserForRender();
   }
 
   public ngOnChanges(): void {
+    this.setUserForRender();
+  }
+
+  private setUserForRender(): void {
     this.userForRender = this.userMapper.prepareForRenderInUserInfo(this.user);
   }
 }
