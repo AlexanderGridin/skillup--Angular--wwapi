@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { Post } from 'src/app/interfaces/post';
 import { PostFormData } from 'src/app/interfaces/form-data/post-form-data';
 
@@ -12,16 +13,14 @@ export class PostFormComponent implements OnInit {
   @Input() public post!: Post;
   @Input() public submitButtonText: string = 'Submit';
 
+  public form!: FormGroup;
+
   private titleFormControlInitalValue!: string;
   private bodyFormControlInitalValue!: string;
-
-  public form!: FormGroup;
 
   @Output() private onSubmit: EventEmitter<Post | PostFormData> =
     new EventEmitter<Post | PostFormData>();
   @Output() private onCancel: EventEmitter<Event> = new EventEmitter<Event>();
-
-  constructor() {}
 
   public ngOnInit(): void {
     this.initFormControlsInitialValues();
@@ -72,17 +71,17 @@ export class PostFormComponent implements OnInit {
   }
 
   private handleFormValidStatus(): void {
-    if (this.post) {
-      let updatedPost: Post = {
-        ...this.form.value,
-        userId: this.post.userId,
-        id: this.post.id,
-      };
+    this.post
+      ? this.onSubmit.emit(this.createPostFromFormData(this.form.value))
+      : this.onSubmit.emit(this.form.value);
+  }
 
-      this.onSubmit.emit(updatedPost);
-    } else {
-      this.onSubmit.emit(this.form.value);
-    }
+  private createPostFromFormData(formData: PostFormData): Post {
+    return {
+      ...this.form.value,
+      userId: this.post.userId,
+      id: this.post.id,
+    };
   }
 
   public handleFormCancel(event: Event): void {
