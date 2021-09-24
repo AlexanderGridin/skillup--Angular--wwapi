@@ -1,11 +1,19 @@
-<kendo-grid
-  [data]="usersForRender"
-  scrollable="none"
-  (cellClick)="handleKendoCellClick($event)"
-  (dblclick)="handleKendoGridDoubleClick()"
+<div
+  class="users-table"
+  [ngClass]="{ 'users-table--loading-users': !isUsersReadyForRender }"
 >
-  <kendo-grid-column title="Name" field="name"> </kendo-grid-column>
-  <kendo-grid-column field="email" title="Email"></kendo-grid-column>
-  <kendo-grid-column title="Address" field="address"> </kendo-grid-column>
-  <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
-</kendo-grid>
+  <kendo-grid
+    [data]="usersForRender"
+    scrollable="none"
+    (cellClick)="handleKendoCellClick($event)"
+    (dblclick)="handleKendoGridDoubleClick()"
+    *ngIf="isUsersReadyForRender"
+  >
+    <kendo-grid-column title="Name" field="name"> </kendo-grid-column>
+    <kendo-grid-column field="email" title="Email"></kendo-grid-column>
+    <kendo-grid-column title="Address" field="address"> </kendo-grid-column>
+    <kendo-grid-column field="phone" title="Phone"></kendo-grid-column>
+  </kendo-grid>
+
+  <loader *ngIf="!isUsersReadyForRender"></loader>
+</div>

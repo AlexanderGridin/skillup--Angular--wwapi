@@ -24,6 +24,8 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   public usersForRender!: UserOfUsersTable[];
   private selectedUser!: UserOfUsersTable;
 
+  public isUsersReadyForRender: boolean = false;
+
   private getUsersSub!: Subscription;
 
   @Output() private onSelectUserByDblclick: EventEmitter<number> =
@@ -46,7 +48,12 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   }
 
   private processUsersFromStore(users: User[] | null): void {
-    users ? this.setUsersForRender(users) : this.usersStoreService.loadUsers();
+    if (users) {
+      this.setUsersForRender(users);
+      this.isUsersReadyForRender = true;
+    } else {
+      this.usersStoreService.loadUsers();
+    }
   }
 
   private setUsersForRender(users: User[]): void {
